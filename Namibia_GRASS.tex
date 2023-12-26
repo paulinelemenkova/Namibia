@@ -17,6 +17,7 @@
 \usepackage[inline]{trackchanges} %for better track changes. finalnew option will compile document with changes incorporated.
 \usepackage{soul}
 \linenumbers
+\graphicspath{{figures/}} % path to folder with figures
 %%%%%%%
 % As of 2018 we recommend use of the TrackChanges package to mark revisions.
 % The trackchanges package adds five new LaTeX commands:
@@ -32,34 +33,7 @@
 
 \draftfalse
 
-%% Enter journal name below.
-%% Choose from this list of Journals:
-%
-% JGR: Atmospheres
-% JGR: Biogeosciences
-% JGR: Earth Surface
-% JGR: Oceans
-% JGR: Planets
-% JGR: Solid Earth
-% JGR: Space Physics
-% Global Biogeochemical Cycles
-% Geophysical Research Letters
-% Paleoceanography and Paleoclimatology
-% Radio Science
-% Reviews of Geophysics
-% Tectonics
-% Space Weather
-% Water Resources Research
-% Geochemistry, Geophysics, Geosystems
-% Journal of Advances in Modeling Earth Systems (JAMES)
-% Earth's Future
-% Earth and Space Science
-% Geohealth
-%
-% ie, \journalname{Water Resources Research}
-
-\journalname{Enter journal name here}
-
+\journalname{Journal of Advances in Modeling Earth Systems (JAMES)}
 
 \begin{document}
 
@@ -98,10 +72,7 @@
 
 \authors{Polina Lemenkova\affil{1}\thanks{Schillerstraße 30, A-5020 Salzburg, Austria}}
 
-
- \affiliation{1}{Department of Geoinformatics, Faculty of Digital and Analytical Sciences, Universität Salzburg}
-
-\affiliation{1}{Schillerstraße 30, A-5020 Salzburg, Austria}
+\affiliation{1}{Department of Geoinformatics, Faculty of Digital and Analytical Sciences, Universität Salzburg. Schillerstraße 30, A-5020 Salzburg, Austria}
 
 \correspondingauthor{Polina Lemenkova}{polina.lemenkova@plus.ac.at}
 
@@ -120,9 +91,9 @@
 % \end{keypoints}
 
 \begin{keypoints}
-\item enter point 1 here
-\item enter point 2 here
-\item enter point 3 here
+\item Random Forest
+\item Remote Sensing
+\item Image Processing
 \end{keypoints}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -163,7 +134,7 @@ https://www.agu.org/Share-and-Advocate/Share/Community/Plain-language-summary
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% Suggested section heads:
-% \section{Introduction}
+ \section{Introduction}
 %
 % The main text should start with an introduction. Except for short
 % manuscripts (such as comments and replies), the text should be divided
@@ -172,34 +143,54 @@ https://www.agu.org/Share-and-Advocate/Share/Community/Plain-language-summary
 % Headings should be sentence fragments and do not begin with a
 % lowercase letter or number. Examples of good headings are:
 
-% \section{Materials and Methods}
-% Here is text on Materials and Methods.
-%
-% \subsection{A descriptive heading about methods}
+ \section{Materials and Methods}
+The study area includes the northern part ofNamibia, the Etosha Pan, Figure \ref{fig01}.
+ 
+ \begin{figure}
+	\noindent\includegraphics[width=\textwidth]{Fig_01.jpg}
+\caption{Topographic map of Namibia with indicated study area: Etosha Pan. Mapping software: Generic Mapping Tools (GMT). Map source: author.}
+\label{fig01}
+\end{figure}
+
+ \subsection{A descriptive heading about methods}
 % More about Methods.
 %
-% \section{Data} (Or section title might be a descriptive heading about data)
-%
-% \section{Results} (Or section title might be a descriptive heading about the
-% results)
-%
-% \section{Conclusions}
+\section{Data}
+The data used in this study includes four satellite images of the Landsat 8-9 Operational Land Imager and Thermal Infrared Sensor (Landsat 8-9 OLI/TIRS). The original images were processed and stored in Universal Transverse Mercator (UTM) Zone 33 for northern Namibia. The dataset is presented in Figure \ref{fig03}.
+
+\begin{figure}
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03a_mar.jpg} \\
+    \small (a)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03b_apr.jpg} \\
+    \small (b)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03c_may.jpg} \\
+    \small (c)
+     \end{tabular}
+     \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03d_jun.jpg} \\
+    \small (d)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03e_jul.jpg} \\
+    \small (e)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03f_aug.jpg} \\
+    \small (f)
+  \end{tabular}
+  \caption{Landsat 8-9 OLI/TIRS images used as dataset covering the Etosha Pan region, Namibia: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022. The images are shown in RGB natural colours. Data sources: USGS}
+\end{figure}
 
 
-\section{= enter section title =}
-%Text here ===>>>
+\section{Results}
 
-
-%%
-
-%  Numbered lines in equations:
-%  To add line numbers to lines in equations,
-%  \begin{linenomath*}
-%  \begin{equation}
-%  \end{equation}
-%  \end{linenomath*}
-
-
+\section{Conclusions}
 
 %% Enter Figures and Tables near as possible to where they are first mentioned:
 %
@@ -212,33 +203,8 @@ https://www.agu.org/Share-and-Advocate/Share/Community/Plain-language-summary
 %  should be placed in last line of the table, using
 % \multicolumn2l{$^a$ This is a table note.}
 % NOTE that there is no difference between table caption and table heading in the final, published version
-%
-%----------------
-% EXAMPLE FIGURES
-%
-% \begin{figure}
-% \includegraphics{example.png}
-% \caption{caption}
-% \end{figure}
-%
-% Giving latex a width will help it to scale the figure properly. A simple trick is to use \textwidth. Try this if large figures run off the side of the page.
-% \begin{figure}
-% \noindent\includegraphics[width=\textwidth]{anothersample.png}
-%\caption{caption}
-%\label{pngfiguresample}
-%\end{figure}
-%
-%
-% If you get an error about an unknown bounding box, try specifying the width and height of the figure with the natwidth and natheight options. This is common when trying to add a PDF figure without pdflatex.
-% \begin{figure}
-% \noindent\includegraphics[natwidth=800px,natheight=600px]{samplefigure.pdf}
-%\caption{caption}
-%\label{pdffiguresample}
-%\end{figure}
-%
-%
-% PDFLatex does not seem to be able to process EPS figures. You may want to try the epstopdf package.
-%
+
+
 
 %
 % ---------------
@@ -283,13 +249,6 @@ https://www.agu.org/Share-and-Advocate/Share/Community/Plain-language-summary
 %  \end{tabular}
 %  \end{sidewaystable}
 
-%% If using numbered lines, please surround equations with \begin{linenomath*}...\end{linenomath*}
-%\begin{linenomath*}
-%\begin{equation}
-%y|{f} \sim g(m, \sigma),
-%\end{equation}
-%\end{linenomath*}
-
 %%% End of body of article
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -306,31 +265,16 @@ https://www.agu.org/Share-and-Advocate/Share/Community/Plain-language-summary
 %\appendix
 %\section{Here is a sample appendix}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Optional Glossary, Notation or Acronym section goes here:
-%
-% Glossary is only allowed in Reviews of Geophysics
-%  \begin{glossary}
-%  \term{Term}
-%   Term Definition here
-%  \term{Term}
-%   Term Definition here
-%  \term{Term}
-%   Term Definition here
-%  \end{glossary}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Acronyms
-%% NOTE that acronyms in the final published version will be spelled out when used in figure captions.
-%   \begin{acronyms}
-%   \acro{Acronym}
-%   Definition here
-%   \acro{EMOS}
-%   Ensemble model output statistics
-%   \acro{ECMWF}
-%   Centre for Medium-Range Weather Forecasts
-%   \end{acronyms}
+%%%% NOTE that acronyms in the final published version will be spelled out when used in figure captions.
+ \begin{acronyms}
+   \acro{USGS}
+    United States Geological Survey\\
+   \acro{GMT}
+    Generic Mapping Tools \\
+   \acro{Landsat OLI/TIRS }
+   Landsat Operational Land Imager and Thermal Infrared Sensor \\
+\end{acronyms}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -345,8 +289,6 @@ https://www.agu.org/Share-and-Advocate/Share/Community/Plain-language-summary
 %   \end{notation}
 
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % DATA SECTION and ACKNOWLEDGMENTS
@@ -356,10 +298,6 @@ https://www.agu.org/Share-and-Advocate/Share/Community/Plain-language-summary
 \section*{Open Research Section}
 This section MUST contain a statement that describes where the data supporting the conclusions can be obtained. Data cannot be listed as ''Available from authors'' or stored solely in supporting information. Citations to archived data should be included in your reference list. Wiley will publish it as a separate section on the paper’s page. Examples and complete information are here:
 https://www.agu.org/Publish with AGU/Publish/Author Resources/Data for Authors
-
-
-\acknowledgments
-Enter acknowledgments here. This section is to acknowledge funding, thank colleagues, enter any secondary affiliations, and so on.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -394,8 +332,6 @@ Enter acknowledgments here. This section is to acknowledge funding, thank collea
 % apacite uses < > for prenotes and [ ] for postnotes
 % DO NOT use other cite commands (e.g., \citet, \citep, \citeyear, \nocite, \citealp, etc.).
 %
-
-
 
 \end{document}
 
@@ -460,52 +396,6 @@ More Information and Advice:
 % \item
 % \end{enumerate}
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%  EQUATIONS
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Single-line equations are centered.
-% Equation arrays will appear left-aligned.
-
-Math coded inside display math mode \[ ...\]
- will not be numbered, e.g.,:
- \[ x^2=y^2 + z^2\]
-
- Math coded inside \begin{equation} and \end{equation} will
- be automatically numbered, e.g.,:
- \begin{equation}
- x^2=y^2 + z^2
- \end{equation}
-
-
-% To create multiline equations, use the
-% \begin{eqnarray} and \end{eqnarray} environment
-% as demonstrated below.
-\begin{eqnarray}
-  x_{1} & = & (x - x_{0}) \cos \Theta \nonumber \\
-        && + (y - y_{0}) \sin \Theta  \nonumber \\
-  y_{1} & = & -(x - x_{0}) \sin \Theta \nonumber \\
-        && + (y - y_{0}) \cos \Theta.
-\end{eqnarray}
-
-%If you don't want an equation number, use the star form:
-%\begin{eqnarray*}...\end{eqnarray*}
-
-% Break each line at a sign of operation
-% (+, -, etc.) if possible, with the sign of operation
-% on the new line.
-
-% Indent second and subsequent lines to align with
-% the first character following the equal sign on the
-% first line.
-
-% Use an \hspace{} command to insert horizontal space
-% into your equation if necessary. Place an appropriate
-% unit of measure between the curly braces, e.g.
-% \hspace{1in}; you may have to experiment to achieve
-% the correct amount of space.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
