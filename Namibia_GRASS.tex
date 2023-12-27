@@ -38,37 +38,10 @@
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  TITLE
-%
-% (A title should be specific, informative, and brief. Use
-% abbreviations only if they are defined in the abstract. Titles that
-% start with general keywords then specific terms are optimized in
-% searches)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Example: \title{This is a test title}
 
 \title{Ensemble Learning Methods for Image Classification Using Multitude Decision Trees in GRASS GIS for Mapping Seasonal Fluctuations of Etosha Pan, Namibia}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%  AUTHORS AND AFFILIATIONS
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Authors are individuals who have significantly contributed to the
-% research and preparation of the article. Group authors are allowed, if
-% each author in the group is separately identified in an appendix.)
-
-% List authors by first name or initial followed by last name and
-% separated by commas. Use \affil{} to number affiliations, and
-% \thanks{} for author notes.
-% Additional author notes should be indicated with \thanks{} (for
-% example, for current addresses).
-
-% Example: \authors{A. B. Author\affil{1}\thanks{Current address, Antartica}, B. C. Author\affil{2,3}, and D. E.
-% Author\affil{3,4}\thanks{Also funded by Monsanto.}}
 
 \authors{Polina Lemenkova\affil{1}\thanks{Schillerstraße 30, A-5020 Salzburg, Austria}}
 
@@ -77,18 +50,6 @@
 \correspondingauthor{Polina Lemenkova}{polina.lemenkova@plus.ac.at}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% KEY POINTS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  List up to three key points (at least one is required)
-%  Key Points summarize the main points and conclusions of the article
-%  Each must be 140 characters or fewer with no special characters or punctuation and must be complete sentences
-
-% Example:
-% \begin{keypoints}
-% \item	List up to three key points (at least one is required)
-% \item	Key Points summarize the main points and conclusions of the article
-% \item	Each must be 140 characters or fewer with no special characters or punctuation and must be complete sentences
-% \end{keypoints}
 
 \begin{keypoints}
 \item Random Forest
@@ -118,14 +79,11 @@
 %% \begin{abstract} starts the second page
 
 \begin{abstract}
-[ enter your Abstract here ]
+Identification of fluctuations in Etosha salt pan poses a challenge in the environmental domain. Etosha Pan presents unique salt landscape and noticeable geological feature in northern Namibia. With seasonal fluctuation cycles from dry to wet periods, the water level in the basin contrasts from evaporated to flooding. Such changes affect vegetation and surrounding landscapes. Monitoring dynamics of the Etosha salt pan is possible using a time series analysis based on remote sensing (RS) data. Image classification is the most common type of RS data processing which can be used for cartographic visualization of changes in land cover types. Recently, the methods of Machine Learning (ML) experience significant development which paved the way to their effective applications in Earth system data processing. Ensemble learning approach with Random Forest (RF) presents the example of such advanced methods applied to satellite image classification. It is based on the integration of several ML approaches including the decision trees algorithm with controlled variance which improves the accuracy of image partition process. This paper improves the image classification methods using training algorithm of RF by the modules of GRASS GIS based on the embedded Scikit-Learn machine learning library of Python. Several existing techniques of GRASS GIS were investigated and tested, with a hybrid approach using a combination of RS modules such as 'r.learn.predict', 'r.random', 'r.learn.train', 'r.category', 'i.group', among others. As a result, land cover types around Etosha Pan were identified using six multi-spectral Landsat 8-9 OLI/TIRS images. The classification of images collected in different seasons for consecutive months from March to August enabled to monitor the process of slow evaporation in Etosha Pan during the transitional wet-to-dry period. The comparison of images revealed the distinct variations in the surface of basin from wet period in March to the dry period when the basin is covered by the crust of salt and minerals. The series of the presented maps made using ML-based methods of GRASS GIS demonstrates the opportunities of the ensemble learning tools to image processing by RF classifiers. Such novel approaches enable accurate classification of geospatial data for environmental analysis and interpretation of landscape dynamics. The proposed method of ML-based image classification in GRASS GIS and its efficacy in RS data evaluation proposes an accurate tool for forecasting and prognosis of changes in south African landscapes of Namibia.
 \end{abstract}
 
 \section*{Plain Language Summary}
-Enter your Plain Language Summary here or delete this section.
-Here are instructions on writing a Plain Language Summary: 
-https://www.agu.org/Share-and-Advocate/Share/Community/Plain-language-summary
-
+Etosha pan located is a large salt pan in northern Namibia. It is a vast basin in the land surface where water collects seasonally depending on rains and evaporates during dry periods with the surface covered by salt and minerals. Satellite image classification presents effective method for monitoring these changes using a comparison of several scenes collected during dry and wet periods. While traditional classification methods is usually based on the Geographic Information Systems (GIS) tools, a novel tools of Machine Learning (ML) presents a more effective, automated and accurate approach to image processing. This paper presents the application of one of the ML methods using Random Forest (RF) algorithms of GRASS GIS which utilises the embedded libraries of Python Scikit-Learn for image processing. The results show landscape dynamics in Etosha Pan from March to August in 2022 using a series of Landsat satellite images classified by RF method.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
