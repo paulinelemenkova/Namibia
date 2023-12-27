@@ -59,25 +59,6 @@
 \end{keypoints}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%  ABSTRACT and PLAIN LANGUAGE SUMMARY
-%
-% A good Abstract will begin with a short description of the problem
-% being addressed, briefly describe the new data or analyses, then
-% briefly states the main conclusion(s) and how they are supported and
-% uncertainties.
-
-% The Plain Language Summary should be written for a broad audience,
-% including journalists and the science-interested public, that will not have 
-% a background in your field.
-%
-% A Plain Language Summary is required in GRL, JGR: Planets, JGR: Biogeosciences,
-% JGR: Oceans, G-Cubed, Reviews of Geophysics, and JAMES.
-% see http://sharingscience.agu.org/creating-plain-language-summary/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% \begin{abstract} starts the second page
 
 \begin{abstract}
 Identification of fluctuations in Etosha salt pan poses a challenge in the environmental domain. Etosha Pan presents unique salt landscape and noticeable geological feature in northern Namibia. With seasonal fluctuation cycles from dry to wet periods, the water level in the basin contrasts from evaporated to flooding. Such changes affect vegetation and surrounding landscapes. Monitoring dynamics of the Etosha salt pan is possible using a time series analysis based on the Remote Sensing (RS) data. Image classification is the most common type of RS data processing which can be used for cartographic visualization of changes in land cover types. Recently, the methods of Machine Learning (ML) experience significant development which paved the way to their effective applications in Earth system data processing. Ensemble learning approach with Random Forest (RF) presents the example of such advanced methods applied to satellite image classification. It is based on the integration of several ML approaches including the decision trees algorithm with controlled variance which improves the accuracy of image partition process. This paper improves the image classification methods using training algorithm of RF by the modules of GRASS GIS based on the embedded Scikit-Learn machine learning library of Python. Several existing techniques of GRASS GIS were investigated and tested, with a hybrid approach using a combination of RS modules such as 'r.learn.predict', 'r.random', 'r.learn.train', 'r.category', 'i.group', among others. As a result, land cover types around Etosha Pan were identified using six multi-spectral Landsat 8-9 OLI/TIRS images. The classification of images collected in different seasons for consecutive months from March to August enabled to monitor the process of slow evaporation in Etosha Pan during the transitional wet-to-dry period. The comparison of images revealed the distinct variations in the surface of basin from wet period in March to the dry period when the basin is covered by the crust of salt and minerals. The series of the presented maps made using ML-based methods of GRASS GIS demonstrates the opportunities of the ensemble learning tools to image processing by RF classifiers. Such novel approaches enable accurate classification of geospatial data for environmental analysis and interpretation of landscape dynamics. The proposed method of ML-based image classification in GRASS GIS and its efficacy in RS data evaluation proposes an accurate tool for forecasting and prognosis of changes in south African landscapes of Namibia.
@@ -94,13 +75,8 @@ Etosha pan located is a large salt pan in northern Namibia. It is a vast basin i
 
 %%% Suggested section heads:
  \section{Introduction}
-%
-% The main text should start with an introduction. Except for short
-% manuscripts (such as comments and replies), the text should be divided
-% into sections, each with its own heading.
 
-% Headings should be sentence fragments and do not begin with a
-% lowercase letter or number. Examples of good headings are:
+The use of Machine Learning (ML) has been in the centre of attention recently for the challenge of Earth observation data processing. The use of these tools ensures automation of satellite data processing, supports operative monitoring using time series and has an important effect on accuracy and effectiveness of data processing for cartographic visualization. With numerous applications in the environmental and Earth science sector, many studies are currently investigating the applicability of programming algorithms and ML methods in geospatial domain.
 
  \section{Materials and Methods}
 \subsection{Study Area}
@@ -290,7 +266,9 @@ A novel hybrid ensemble learning ML method of GRASS GIS to image classification 
 
 The efficiency of environmental mapping that operate with the satellite images, especially for monitoring seasonal fluctuations in land cover types can now be improved by using the Machine Learning (ML) methods of Python integrated with cartographic tools. Thus, the analysis of scenes indicates that the evaporation of water during dry periods coincides with the cycle of flooding and evaporation in the north Namibia. During dry period, a mineral-encrusted salt pan covers the surface of basin which reaches its peak in August while the most water-filled period is in March. The comparison of these scenes as ML-classified satellite images show gradual development in salinization of the Etosha Pan basin during six consecutive months in 2022. The results of experiments demonstrate that RF has a high automation in image processing, accuracy in pixel assignments, increased details of classification with more fragmented identified patterns in the landscapes of norther Namibia. 
 
-The RF method of image processing is pitted against the other traditional classification methods such as k-means Clustering and Maximum Likelihood (MaxLike) of GRASS GIS. The use of such advanced solution helps in providing automated tools of satellite image processing and classification. Moreover, the feasibility of the RF algorithms enables to use it as an innovative approach that may be used in practise for diverse types of satellite images, including Sentinel, SPOT and other imagery. The outcome of the framework in the GRASS GIS based image processing using ensemble learning is the output of the series of the classified satellite images processed using decision criteria analysis of ML algorithms. To enhance its application in similar future studies, the RF classifiers technique can be applies as effective ML tools of the GRASS GIS modules to processing Earth observation data for operative environmental monitoring.
+Although traditional classification methods using in mapping and GIS can effectively perform for satellite image processing, it has higher time-consuming performance. Moreover, the state-of-the-art image classification approaches depend on the regional landscape characteristics and specific property of land cover types. For instance, landscape heterogeneity, surface ruggedness, slope curvature and regional spatial complexity of land surface may affect the degree of fragmentation. In contrast, the Machine Learning (ML) algorithms are more efficient and straightforward in cartographic implementation in comparison with traditional ways of image classification. With the development of ensemble algorithms presented by Scikit-Learn library of Python, RF is one of such approaches of ML that emerged and applied rapidly due to its effectiveness and applicability. Specifically for RS data processing, RF has been successfully applied to existing problem of classification due to its effectiveness, high level of automation and robustness.
+
+This paper demonstrated the effective use of the RF method of image processing which was pitted against the other traditional classification methods such as k-means Clustering and Maximum Likelihood (MaxLike) of GRASS GIS. The use of such advanced solution helps in providing automated tools of satellite image processing and classification. Moreover, the feasibility of the RF algorithms enables to use it as an innovative approach that may be used in practise for diverse types of satellite images, including Sentinel, SPOT and other imagery. The outcome of the framework in the GRASS GIS based image processing using ensemble learning is the output of the series of the classified satellite images processed using decision criteria analysis of ML algorithms. To enhance its application in similar future studies, the RF classifiers technique can be applies as effective ML tools of the GRASS GIS modules to processing Earth observation data for operative environmental monitoring.
 
 %
 % ---------------
@@ -423,9 +401,6 @@ https://www.agu.org/Publish with AGU/Publish/Author Resources/Data for Authors
 
 \end{document}
 
-
-
-More Information and Advice:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
