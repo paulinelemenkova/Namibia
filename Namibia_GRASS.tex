@@ -86,7 +86,7 @@ Ensemble learning approach of image processing is the method of image processing
 
 The state-of-the-art methods of image classification in traditional GIS methods have certain limitations which can be summarised as follows. Firstly, since image classification is generally based on spectral reflectance of pixels, some cases may take place. This is cased by the ground properties of pixels which are not representing real land surface objects and strongly depend on the resolution of satellite images. As a result, objects which have very similar spectral properties can be erroneously assigned to the same land cover class. Secondly, object topology is often avoided in when interpreting the imagery. To avoid this drawback, some studies analyse spatial relationships between the objects using Object Based Image Analysis (OBIA) techniques \cite{LUCIANO2019127,PHIRI2018170,DEWALI20233109,MAO202011}. Nevertheless, this is a different approach that requires specific software and tools. Thirdly, the inherited properties of the land surface such as texture, curvature of patches, context of disposition of several objects representing the scene, shape, form and structure of objects is difficult to properly identified using the traditional image classification techniques in standard GIS \cite{OUSMANOU2024100239,ZHANG2023129590,BAKR2010592}. Moreover, increased variability of images with different properties and resolution require more advanced methods compared to the traditional approaches of image analysis that use pixel-based classification algorithms. This lead to the issues in accuracy and precision of image classification process \cite{Fisher,McKee}.
 
-In view of these limitations, the use of the novel ML methods for RS data processing and programming algorithms for classification approaches has recently drawn much attention \cite{Ayhan}. Among them, Python algorithms of Scikit-Learn library which presents a powerful instrument for ML methods have been investigated in a number of works \cite{9884244,9883588,9006205,7724471}. 
+In view of these limitations, the use of the novel ML methods for RS data processing and programming algorithms for classification approaches has recently drawn much attention \cite{Ayhan}. Among them, Python algorithms of Scikit-Learn library which presents a powerful instrument for ML methods have been investigated in a number of works \cite{9884244,9883588,9006205,7724471}. The RF algorithm embedded in the mapping of crop fields using Landsat imagery was thoroughly described by \cite{LUCIANO2021106063}. \cite{AHMED201589} proposed an integrated application of the RF algorithm based on the multi-source data combining LiDAR and Landsat where connected components in the RS data are particularly well suited for complex forest canopy analysis using data on cover and height. Various more research projects have demonstrated the potential of this approach \cite{COLLINS2020111839,WEI2020112005,WANG202294}, yet it still suffers from some limitations regarding its application in the GRASS GIS. For example, RF algorithm needs to be better exploited using GRASS GIS scripting modules in view of the current lack of a practical framework and hands-on applications in case studies.
 
  \section{Materials and Methods}
  
@@ -347,8 +347,8 @@ This paper demonstrated the effective use of the RF method of image processing w
 
 %%%% NOTE that acronyms in the final published version will be spelled out when used in figure captions.
  \begin{acronyms}
-   \acro{USGS}
-    United States Geological Survey\\
+ \acro{GIS}
+   Geographic Information Systems \\
      \acro{GRASS}
     Geographic Resources Analysis Support System \\
    \acro{GMT}
@@ -359,6 +359,12 @@ This paper demonstrated the effective use of the RF method of image processing w
    Food and Agriculture Organization \\
    \acro{OBIA}
    Object Based Image Analysis \\
+   \acro{RF}
+   Random Forest \\
+   \acro{RS}
+Remote Sensing\\
+      \acro{USGS}
+    United States Geological Survey\\
 \end{acronyms}
 
 
@@ -381,17 +387,14 @@ This paper demonstrated the effective use of the RF method of image processing w
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Open Research Section}
-This section MUST contain a statement that describes where the data supporting the conclusions can be obtained. Data cannot be listed as ''Available from authors'' or stored solely in supporting information. Citations to archived data should be included in your reference list. Wiley will publish it as a separate section on the paper’s page. Examples and complete information are here:
-https://www.agu.org/Publish with AGU/Publish/Author Resources/Data for Authors
-
+the data supporting the conclusions can be obtained from the USGS service of the satellite image repository: https://earthexplorer.usgs.gov/
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % REFERENCES and BIBLIOGRAPHY
 %
 \bibliography{Namibia}
 %\nocite{*}
-% don't specify bibliographystyle
-%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\bibliography{ enter your bibtex bibliography filename here }
