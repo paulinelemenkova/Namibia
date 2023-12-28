@@ -120,7 +120,7 @@ The study area includes the northern part of Namibia, the Etosha Pan, Figure \re
 A Random Forest (RF) function algorithm of ensemble learning was derived from GRASS GIS and used to test the simulation of the satellite image time series on Etosha Pan region, Namibia. The trained pixels were obtained from the 'RandomForestClassifier' algorithms connected to the Scikit-Learn libraries of Python \cite{Pedregosa} embedded with GRASS GIS ML function of image analysis.  The RF is a type of bagging algorithm of image classification that uses the Machine Learning (ML) methods of the classification and regression tree decision as learners. The randomness of data points in a raster image evaluated in this algorithm is assessed for reducing model variance. As a result, the advantages of the RF consists in excellent generalisation approach to data classification which combines the results of multiple decision trees to reach a single classification result through anti-overfitting. The GRASS GIS ML framework of image processing was employed to map seasonal variations in the Etosha Pan using six satellite multispectral Landsat 8-9 OLI/TIRS images with one-month time span.
 
 \section{Data}
-The data used in this study includes four satellite images of the Landsat 8-9 Operational Land Imager and Thermal Infrared Sensor (Landsat 8-9 OLI/TIRS). The original images were processed and stored in Universal Transverse Mercator (UTM) Zone 33 for northern Namibia. The dataset is presented in Figure \ref{fig03}.
+The data used in this study includes four satellite images of the Landsat 8-9 Operational Land Imager and Thermal Infrared Sensor (Landsat 8-9 OLI/TIRS). The original images were processed and stored in Universal Transverse Mercator (UTM) Zone 33 for northern Namibia. The dataset is presented in Figure \ref{fig03}. Here, the raw dataset illustrates the environmental changes in Etosha Pan - a lake in northern Namibia with unique changing ecosystems that fluctuates from the wet period when the lake is is filled with water to the dry period when the basin becomes covered with a salt crust.   Salinisation of the Etosha Pan is caused by seasonal fluctuations from dry to wet periods. During hot summer time, rains gradually slow and cease leaving the basin of the lake covered by crust of salt and minerals. Parched brownish landscapes in western and central parts of lake clearly contrast with the remaining segments of the lake still filled with water. Different colours of water varying from electric cyan to dark navy blue show the depths of the lake with darker shadows indicating deeper segments. Green colours indicate mosaic vegetation in the surrounding landscapes, Figure \ref{fig03}. 
 
 \begin{figure}[H]
   \centering
@@ -149,6 +149,7 @@ The data used in this study includes four satellite images of the Landsat 8-9 Op
     \small (f)
   \end{tabular}
   \caption{Landsat 8-9 OLI/TIRS images used as dataset covering the Etosha Pan region, Namibia: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022. The images are shown in RGB natural colours. Data sources: USGS}
+  \label{fig03}
 \end{figure}
 
 \begin{figure}[H]
@@ -190,6 +191,7 @@ The data used in this study includes four satellite images of the Landsat 8-9 Op
     \small (i)
      \end{tabular}
   \caption{Examples of different combinations of the created colour composites highlighting the Etosha Pan, Namibia. The images are generated based on triplets of Landsat 8-9 OLI/TIRS bands on 2022, using 'r.composite' module of GRASS GIS: \textbf{(a)}: March 2022: Bands 7-5-3;\textbf{(b)}: March 2022: Bands 2-3-4; \textbf{(c)}: March 2022: Bands 3-4-5; \textbf{(d)}: April 2022: Bands 7-5-4;\textbf{(e)}: April 2022: Bands 3-4-5; \textbf{(f)}: April 2022: Bands 3-4-5; \textbf{(g)}: May 2022: Bands 3-5-7; \textbf{(h)}: June 2022: Bands 1-5-6; \textbf{(i)}: August 2022: Bands 7-4-1.}
+  \label{fig04}
 \end{figure}
 
 \section{Results}
@@ -221,6 +223,7 @@ The data used in this study includes four satellite images of the Landsat 8-9 Op
     \small (f)
   \end{tabular}
   \caption{Classification of the Landsat-8-9 OLI/TIRS images covering the Etosha Pan region, Namibia using 'MaxLike' method: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022.}
+  \label{fig05}
 \end{figure}
 
 \begin{figure}[H]
@@ -250,6 +253,7 @@ The data used in this study includes four satellite images of the Landsat 8-9 Op
     \small (f)
   \end{tabular}
   \caption{Accuracy assessment using the rejection probability for pixels classified for Landsat-8-9 OLI/TIRS images on the Etosha Pan region, Namibia: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022.}
+  \label{fig06}
 \end{figure}
 
 \begin{figure}[H]
@@ -279,6 +283,7 @@ The data used in this study includes four satellite images of the Landsat 8-9 Op
     \small (f)
   \end{tabular}
   \caption{Results of the Random Forest (RF) classification using ML approach of GRASS GIS for the Landsat-8-9 OLI/TIRS images on Etosha Pan, Namibia: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022.}
+  \label{fig07}
 \end{figure}
 
 \section{Conclusions}
@@ -292,6 +297,8 @@ With the development of ensemble algorithms presented by Scikit-Learn library of
 The experimental results on processing and classification of six satellite images covering Etosha Pan indicate that the proposed RF algorithms of the ensemble learning methods of GRASS GIS is dominant in comparison with other methods. Thus, RF demonstrates the fast processing speed when dealing with multi-spectral images using functions of RS modules, 'r.learn.predict' and 'r.category'. When solving complex hybrid functions of 'r.learn.train' module, the RF shows its excellent exploration of the previous training dataset used as seed for the following classification. The extensibility of RF is represented in optimising the training pixels derived from the generated dataset by 'r.random' module with different heterogeneity of the landscapes that is expressed in fragmentation of patches. Besides superior performance, the time complexity of RF when used in GRASS GIS is acceptable compared with 'MaxLike' approach using 'i.maxlik' module as a traditional variant of image classification.
 
 This paper demonstrated the effective use of the RF method of image processing which was pitted against the other traditional classification methods such as k-means Clustering and Maximum Likelihood (MaxLike) of GRASS GIS. The use of such advanced solution helps in providing automated tools of satellite image processing and classification. Moreover, the feasibility of the RF algorithms enables to use it as an innovative approach that may be used in practise for diverse types of satellite images, including Sentinel, SPOT and other imagery. The outcome of the framework in the GRASS GIS based image processing using ensemble learning is the output of the series of the classified satellite images processed using decision criteria analysis of ML algorithms. To enhance its application in similar future studies, the RF classifiers technique can be applies as effective ML tools of the GRASS GIS modules to processing Earth observation data for operative environmental monitoring.
+
+Apart from technical application of the ensemble learning and RF algorithm for modelling RS data, the analysis of several Landsat images performed in this study demonstrated that satellite images are a useful data source for environmental monitoring. Specifically, time series analysis enable to monitoring and detect cycles of flooding and droughts in the ecosystems of Africa. The series of the Landsat-8 OLI/TIRS satellite images processed in this study by ensemble learning techniques illustrated the process of intense evaporation of water over Etosha Pan, northern Namibia. This study contributed to the environmental monitoring of Etosha Pan through the analysis of the satellite images taken on different time period. Time series analysis of the RS data supports visualising the dynamics of droughts in Africa. In turn, environmental monitoring is supportive for preserving the ecosystem of Etosha National Park in Namibia where rare species such as elephants, lions or rhinos, depend on the availability of water in Etosha and have to adapt to its seasonally changing environment. 
 
 %
 % ---------------
