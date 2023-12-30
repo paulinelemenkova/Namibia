@@ -47,7 +47,7 @@
 
 \authors{Polina Lemenkova\affil{1}\thanks{Schillerstraße 30, A-5020 Salzburg, Austria}}
 
-\affiliation{1}{Department of Geoinformatics, Faculty of Digital and Analytical Sciences, Universität Salzburg. Schillerstraße 30, A-5020, Itzling, Salzburg, Austria}
+\affiliation{1}{Department of Geoinformatics, Faculty of Digital and Analytical Sciences, Universität Salzburg. Schillerstraße 30, Itzling A-5020, Salzburg, Austria}
 
 \correspondingauthor{Polina Lemenkova}{polina.lemenkova@plus.ac.at}
 
@@ -277,8 +277,6 @@ The goal of the present study was to map the series of satellite images Landsat 
 
 Figure \ref{fig05} shows the classification results for different images taken from wet period (March to May) and dry period (June to August) using band combinations of Landsat 8-9 OLI/TIRS. The 10 generalised land cover classes include the following types detected and identified using the maximal likelihood approach as a seed for the next random forest approach: 1) Mosaic vegetation / cropland 2) Aquatic or regularly flooded vegetation; 3) Bare areas and artificial surfaces; 4) Mixed broadleaved deciduous forests; 5) Open grassland; 6) Rainfed cropland; 7) Salt hardpans; 8) Water bodies (Etosha basin and other lakes); 9) Herbaceous vegetation, shrubland and thickets; 10) Sparse savannah grasslands. 
 
-The RF classification demonstrated in Figure \ref{fig07} was calculated based on the classification (MaxLike) as a seed data in previous step, and yielded more robust and better results compared to the MaxLike. Thus, the landscape patches are more diversified and fragmented with more details detected for smaller polygons both within and beyond the lake area (compare Figure \ref{fig05} and \ref{fig07}). Compared to the performance of 'MaxLike' classification, Random Forest classified performed better in case of similar classes in terms of separability of adjacent landscape patches. For instance, the grasslands, salt hardpan area of Etosha and flooded areas clearly distinct from the mosaic trees and regions of broadleaved deciduous forests due to the different texture characteristics and spectral reflectance of pixels. Therefore, these classes were more easily segmented compared to the areas with similar parameters such as class 'sparse savannah grasslands' compared to class 'herbaceous vegetation, shrubland and thickets'. Therefore, distributions of pixels according to spectral reflectances alone could only discriminate those regions that have distinct characteristics of brightness and spectral reflectance.
-
 \begin{figure}[H]
   \centering
   \begin{tabular}[b]{c}
@@ -308,6 +306,10 @@ The RF classification demonstrated in Figure \ref{fig07} was calculated based on
   \caption{Results of the Random Forest (RF) classification using ML approach of GRASS GIS for the Landsat-8-9 OLI/TIRS images on Etosha Pan, Namibia: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022.}
   \label{fig07}
 \end{figure}
+
+The RF classification demonstrated in Figure \ref{fig07} was calculated based on the classification (MaxLike) as a seed data in previous step, and yielded more robust and better results compared to the MaxLike. Thus, the landscape patches are more diversified and fragmented with more details detected for smaller polygons both within and beyond the lake area (compare Figure \ref{fig05} and \ref{fig07}). Compared to the performance of 'MaxLike' classification, Random Forest classified performed better in case of similar classes in terms of separability of adjacent landscape patches. For instance, the grasslands, salt hardpan area of Etosha and flooded areas clearly distinct from the mosaic trees and regions of broadleaved deciduous forests due to the different texture characteristics and spectral reflectance of pixels. Therefore, these classes were more easily segmented compared to the areas with similar parameters such as class 'sparse savannah grasslands' compared to class 'herbaceous vegetation, shrubland and thickets'. Therefore, distributions of pixels according to spectral reflectances alone could only discriminate those regions that have distinct characteristics of brightness and spectral reflectance.
+
+As shown in Figure \ref{fig07}, distribution of spectral characteristics of diverse land cover types is affected by seasonal changes which is integrated with the effects from salinisation of the basin in dry periods from May onwards. Comparison of Figure  \ref{fig07} with Figure \ref{fig07} shows that RF yielded better results compared to the traditional classification using maximal likelihood. However, some regions were over-fragmented which mights be interpreted as misclassified pixels. The results of RF classification using ensemble learning approach demonstrated in Figure \ref{fig07} are more satisfying compared to the unsupervised classification which is explained by the technical improvements of the ML methods which is based on the adaptive integrating of land cover features based on automated recognition of spectral properties of pixels constituting raster scenes.
 
 \section{Conclusions}
 
