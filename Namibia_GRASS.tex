@@ -19,6 +19,9 @@
 \linenumbers
 \graphicspath{{figures/}} % path to folder with figures
 \usepackage{float}
+\usepackage{array}
+\usepackage{rotating} % for "sidewaystable" environment
+\usepackage{siunitx}
 
 %%%%%%%
 % As of 2018 we recommend use of the TrackChanges package to mark revisions.
@@ -98,6 +101,7 @@ The goal of this study is to apply the scripting techniques of GRASS GIS with th
 \section{Study Area}
 The study area is focused on the saline Etosha Pan, Figure \ref{fig01}. 
  
+ \setlength{\belowcaptionskip}{-10pt}
  \begin{figure}[H]
 	\noindent\includegraphics[width=\textwidth]{Fig_01.jpg}
 \caption{Topographic map of Namibia with indicated study area: Etosha Pan. Mapping software: Generic Mapping Tools (GMT). Map source: author.}
@@ -110,16 +114,13 @@ Climate-related hazards such as frequent and severe droughts, unstable water inf
 
  \begin{figure}[H]
 	\noindent\includegraphics[width=\textwidth]{Fig_02.jpg}
-\caption{Land cover types of Namibia according to  Food and Agriculture Organizatio (FAO). Mapping software: QGIS. Map source: author.}
+\caption{Land cover types of Namibia according to  Food and Agriculture Organizatio (FAO). Mapping software: QGIS. Map source: author.}\setlength{\belowcaptionskip}{-30pt}
 \label{fig02}
 \end{figure}
 
 Oscillations in hydrological patterns from flooding to complete desiccation indicate the progressively increasing aridity and desertification of the Etosha basin affected by regional droughts, impacts from the Kalahari Desert and climate change. Two distinct seasons - dry from April to September and wet from October to March - distinctly divide the climate and environmental patterns while the intra-seasonal water influx is unstable and depend on the ephemeral streams forming occasional pools \cite{Himmelsbach}. At the same time, unique landscapes of Etosha create a habitat for ecosystems used by migrating birds and rare species as habitats \cite{Fox,LeRoux,Berry}. The ability of wetland birds such as flamingos to predict rain fronts and showers using changes in pressure gradients enables them to rapidly find water available in ephemeral reservoirs and pools of Etosha. This results in the significant number of migrating rare birds that use the Etosha as a destination place during severe droughts in other regions \cite{Simmons}. 
 
-\section{Materials and Methods}
- 
-In the workflow of image processing, the Landsat images are computed by a GRASS GIS software which presents a powerful toolset for image analysis \cite{GRASS_GIS_software}. Its excellent and diversified functionality in image processing are reflected in many reported studies which use Earth observation data processed by diverse modules of GRASS GIS \cite{HOFIERKA2009387,Lemenkova202320,ROCCHINI201382,Lemenkova202313,JASIEWICZ20111162}. 
-
+\setlength{\belowcaptionskip}{-30pt}
 \begin{figure}[H]
   \centering
   \begin{tabular}[b]{c}
@@ -146,11 +147,65 @@ In the workflow of image processing, the Landsat images are computed by a GRASS 
     \includegraphics[width=4cm]{Fig_03f_aug.jpg} \\
     \small (f)
   \end{tabular}
-  \caption{Landsat 8-9 OLI/TIRS images used as dataset covering the Etosha Pan region, Namibia: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022. The images are shown in RGB natural colours. Data source: EarthExplorer repository of Landsat imagery by United States Geological Survey (USGS).}
+  \caption{Landsat 8-9 OLI/TIRS images used as dataset covering the Etosha Pan region, Namibia, 2022: \textbf{(a)}: 26 March;\textbf{(b)}: 11 April; \textbf{(c)}: 5 May; \textbf{(d)}: 6 June; \textbf{(e)}: 16 July; \textbf{(f)}: 9 August. The images are shown in RGB colours. Data source: USGS.}
   \label{fig03}
 \end{figure}
 
-The Generic Mapping Tools (GMT) \cite{Wessel} is adopted to map topographic information and visualise the location of the study area using overlaid extent of the multispectral Landsat images, Figure \ref{fig01}. More specifically, the GMT was used using scripting techniques reported and described in earlier works \cite{Lemenkova202203,Lemenkova202217,technologies11020046}. Here the extent of the images is denoted by the rotated square showing the location of the Landsat scenes. Their coordinates were derived from the metadata and correspond to the technical parameters of the Landsat mission. The QGIS software was used for land cover mapping to represent the geospatial information of the landscapes in northern Namibia, Figure \ref{fig02}. 
+\section{Materials and Methods}
+ 
+In the workflow of image processing, the Landsat images are computed by a GRASS GIS software which presents a powerful toolset for image analysis \cite{GRASS_GIS_software}. Its excellent and diversified functionality in image processing are reflected in many reported studies which use Earth observation data processed by diverse modules of GRASS GIS \cite{HOFIERKA2009387,Lemenkova202320,ROCCHINI201382,Lemenkova202313,JASIEWICZ20111162}. The Generic Mapping Tools (GMT) \cite{Wessel} is adopted to map topographic information and visualise the location of the study area using overlaid extent of the multispectral Landsat images, Figure \ref{fig01}. More specifically, the GMT was used using scripting techniques reported and described in earlier works \cite{Lemenkova202203,Lemenkova202217,technologies11020046}. Here the extent of the images is denoted by the rotated square showing the location of the Landsat scenes. Their coordinates were derived from the metadata and correspond to the technical parameters of the Landsat mission. The QGIS software was used for land cover mapping to represent the geospatial information of the landscapes in northern Namibia, Figure \ref{fig02}. 
+
+\subsection{Data}
+The original images are visualised in Figure \ref{fig03}. Major technical characteristics that differ for each Landsat scene are provided in Table \ref{tab01}. The data were obtained from the EarthExplorer repository of the United States Geological Survey (USGS) and included six satellite images of the Landsat 8-9 Operational Land Imager and Thermal Infrared Sensor (Landsat 8-9 OLI/TIRS). The colour composites of the dataset are presented in Figure \ref{fig04} with different combinations used as the RGB triplets from the Landsat bands. The raw dataset illustrates the environmental changes in Etosha Pan that fluctuates from the wet period when the lake is filled with water to the dry period when the basin becomes covered with a salt crust. 
+
+\begin{sidewaystable}
+%\caption{Metadata for Landsat images}
+ \label{tab01}
+ \resizebox{0.9\textwidth}{!}{%
+\tiny
+\setlength\tabcolsep{2pt}
+\begin{tabular}{|l|l|l|l|l|l|l|}    
+\hline
+      	\textbf{Landsat Scene Identifier} & \textbf{LC81790732022085LGN00} & \textbf{LC81790732022101LGN00} & \textbf{LC91790732022125LGN01} & \textbf{LC91790732022157LGN01} & \textbf{LC81790732022197LGN00} & \textbf{LC91790732022221LGN01} \\ \hline
+        \textbf{Date Acquired} & 2022/03/26 & 2022/04/11 & 2022/05/05 & 2022/06/06 & 2022/07/16 & 2022/08/09 \\ \hline
+        \textbf{Roll Angle} & 0.000 & 0.000 & 0.001 & 0.000 & -0.001 & 0.000 \\ \hline
+        \textbf{Date Product Generated L2} & 2022/03/30 & 2022/04/19 & 2023/04/17 & 2023/04/14 & 2022/07/26 & 2023/04/03 \\ \hline
+        \textbf{Date Product Generated L1} & 2022/03/30 & 2022/04/19 & 2023/04/17 & 2023/04/14 & 2022/07/26 & 2023/04/03 \\ \hline
+        \textbf{Start Time} & 2022-03-26 08:55:28.788292 & 2022-04-11 08:55:30.641875 & 2022-05-05 08:55:23 & 2022-06-06 08:55:13 & 2022-07-16 08:55:54 & 2022-08-09 08:55:50 \\ \hline
+        \textbf{Stop Time} & 2022-03-26 08:56:00.558292 & 2022-04-11 08:56:02.411875 & 2022-05-05 08:55:55 & 2022-06-06 08:55:45 & 2022-07-16 08:56:26 & 2022-08-09 08:56:22 \\ \hline
+        \textbf{Land Cloud Cover} & 1.32 & 2.17 & 4.72 & 7.61 & 7.33 & 2.09 \\ \hline
+        \textbf{Scene Cloud Cover L1} & 1.32 & 2.17 & 4.72 & 7.61 & 7.33 & 2.09 \\ \hline
+        \textbf{Ground Control Points Model} & 655 & 731 & 757 & 770 & 770 & 764 \\ \hline
+        \textbf{Geometric RMSE Model} & 6.052 & 5.435 & 4.999 & 5.096 & 4.984 & 4.731 \\ \hline
+        \textbf{Geometric RMSE Model X} & 4.294 & 3.929 & 3.628 & 3.534 & 3.632 & 3.393 \\ \hline
+        \textbf{Geometric RMSE Model Y} & 4.265 & 3.755 & 3.440 & 3.671 & 3.413 & 3.297 \\ \hline
+        \textbf{Sun Elevation L0RA} & 52.82328395 & 49.80572103 & 44.79448536 & 39.50399786 & 39.59460724 & 43.81050644 \\ \hline
+        \textbf{Sun Azimuth L0RA} & 58.84443485 & 50.14840089 & 40.94078960 & 36.09442691 & 38.72515388 & 43.52123333 \\ \hline
+        \textbf{TIRS SSM Model} & FINAL & FINAL & N/A & N/A & FINAL & N/A \\ \hline
+        \textbf{Satellite} & 8 & 8 & 9 & 9 & 8 & 9 \\ \hline
+        \textbf{Scene Center Lat DMS} & "18°47'15.47""S" & "18°47'14.60""S" & "18°47'14.57""S" & "18°47'14.42""S" & "18°47'15.50""S" & "18°47'15""S" \\ \hline
+        \textbf{Scene Center Long DMS} & "16°19'24.89""E" & "16°16'36.80""E" & "16°17'21.16""E" & "16°17'26.23""E" & "16°18'50.76""E" & "16°16'07.28""E" \\ \hline
+        \textbf{Corner Upper Left Lat DMS} & "17°44'22.85""S" & "17°44'23.03""S" & "17°44'22.99""S" & "17°44'22.99""S" & "17°44'22.88""S" & "17°44'23.06""S" \\ \hline
+        \textbf{Corner Upper Left Long DMS} & "15°13'38.35""E" & "15°10'55.38""E" & "15°11'36.13""E" & "15°11'36.13""E" & "15°13'07.79""E" & "15°10'24.82""E" \\ \hline
+        \textbf{Corner Upper Right Lat DMS} & "17°43'30.40""S" & "17°43'32.48""S" & "17°43'31.87""S" & "17°43'31.87""S" & "17°43'30.76""S" & "17°43'32.74""S" \\ \hline
+        \textbf{Corner Upper Right Long DMS} & "17°24'09.43""E" & "17°21'16.42""E" & "17°22'07.28""E" & "17°22'07.28""E" & "17°23'38.90""E" & "17°20'56.04""E" \\ \hline
+        \textbf{Corner Lower Left Lat DMS} & "19°51'06.55""S" & "19°51'06.73""S" & "19°50'56.94""S" & "19°50'56.94""S" & "19°51'06.59""S" & "19°50'57.01""S" \\ \hline
+        \textbf{Corner Lower Left Long DMS} & "15°13'48.61""E" & "15°11'03.59""E" & "15°11'44.84""E" & "15°11'44.84""E" & "15°13'17.69""E" & "15°10'32.63""E" \\ \hline
+        \textbf{Corner Lower Right Lat DMS} & "19°50'07.33""S" & "19°50'09.71""S" & "19°49'59.27""S" & "19°49'59.27""S" & "19°50'07.76""S" & "19°50'00.24""S" \\ \hline
+        \textbf{Corner Lower Right Long DMS} & "17°25'57.86""E" & "17°23'02.69""E" & "17°23'54.06""E" & "17°23'54.06""E" & "17°25'26.94""E" & "17°22'41.92""E" \\ \hline
+        \textbf{Scene Center Latitude} & -18.78763 & -18.78739 & -18.78738 & -18.78734 & -18.78764 & -18.78750 \\ \hline
+        \textbf{Scene Center Longitude} & 16.32358 & 16.27689 & 16.28921 & 16.29062 & 16.31410 & 16.26869 \\ \hline
+        \textbf{Corner Upper Left Latitude} & -17.73968 & -17.73973 & -17.73972 & -17.73972 & -17.73969 & -17.73974 \\ \hline
+        \textbf{Corner Upper Left Longitude} & 15.22732 & 15.18205 & 15.19337 & 15.19337 & 15.21883 & 15.17356 \\ \hline
+        \textbf{Corner Upper Right Latitude} & -17.72511 & -17.72569 & -17.72552 & -17.72552 & -17.72521 & -17.72576 \\ \hline
+        \textbf{Corner Upper Right Longitude} & 17.40262 & 17.35456 & 17.36869 & 17.36869 & 17.39414 & 17.34890 \\ \hline
+        \textbf{Corner Lower Left Latitude} & -19.85182 & -19.85187 & -19.84915 & -19.84915 & -19.85183 & -19.84917 \\ \hline
+        \textbf{Corner Lower Left Longitude} & 15.23017 & 15.18433 & 15.19579 & 15.19579 & 15.22158 & 15.17573 \\ \hline
+        \textbf{Corner Lower Right Latitude} & -19.83537 & -19.83603 & -19.83313 & -19.83313 & -19.83549 & -19.83340 \\ \hline
+        \textbf{Corner Lower Right Longitude} & 17.43274 & 17.38408 & 17.39835 & 17.39835 & 17.42415 & 17.37831 \\ \hline
+    \end{tabular}% 
+    }
+  \end{sidewaystable}
 
 \begin{figure}[H]
   \centering
@@ -190,12 +245,13 @@ The Generic Mapping Tools (GMT) \cite{Wessel} is adopted to map topographic info
     \includegraphics[width=4cm]{Fig_04i_741.jpg} \\
     \small (i)
      \end{tabular}
-  \caption{Examples of different combinations of the created colour composites highlighting the Etosha Pan, Namibia. The images are generated based on triplets of Landsat 8-9 OLI/TIRS bands on 2022, using 'r.composite' module of GRASS GIS: \textbf{(a)}: March 2022: Bands 7-5-3;\textbf{(b)}: March 2022: Bands 2-3-4; \textbf{(c)}: March 2022: Bands 3-4-5; \textbf{(d)}: April 2022: Bands 7-5-4;\textbf{(e)}: April 2022: Bands 3-4-5; \textbf{(f)}: April 2022: Bands 3-4-5; \textbf{(g)}: May 2022: Bands 3-5-7; \textbf{(h)}: June 2022: Bands 1-5-6; \textbf{(i)}: August 2022: Bands 7-4-1.}
+  \caption{Examples of different combinations of the created colour composites highlighting the Etosha Pan, Namibia. The images are generated based on triplets of Landsat 8-9 OLI/TIRS bands on 2022, using 'r.composite' module of GRASS GIS: \textbf{(a)}: March: Bands 7-5-3;\textbf{(b)}: March: Bands 2-3-4; \textbf{(c)}: March: Bands 3-4-5; \textbf{(d)}: April: Bands 7-5-4;\textbf{(e)}: April: Bands 3-4-5; \textbf{(f)}: April: Bands 3-4-5; \textbf{(g)}: May: Bands 3-5-7; \textbf{(h)}: June: Bands 1-5-6; \textbf{(i)}: August: Bands 7-4-1.}
   \label{fig04}
 \end{figure}
 
-\subsection{Data}
-The data used in this study includes four satellite images of the Landsat 8-9 Operational Land Imager and Thermal Infrared Sensor (Landsat 8-9 OLI/TIRS). The original images were processed and stored in Universal Transverse Mercator (UTM) Zone 33 for northern Namibia, Figure \ref{fig03}. The colour composites of the dataset are presented in Figure \ref{fig04} with different combinations used as the RGB triplets from the Landsat bands. The raw dataset illustrates the environmental changes in Etosha Pan - a lake in northern Namibia with unique changing ecosystems that fluctuates from the wet period when the lake is is filled with water to the dry period when the basin becomes covered with a salt crust. In the set of false colour and natural colour composites of images shown in Figure \ref{fig04}, the bright colours of the remaining water and a thin channel connecting the deep part of the basin with drying segment filled with salt and minerals offers a clear contrast with the parched brownish landscapes of savannah of the surroundings. In the dry months (June to August) the bare soil areas contrast with the images on wet season (March to May) with areas covered by lush vegetation. 
+In the set of false colour and natural colour composites of images shown in Figure \ref{fig04}, the bright colours of the remaining water and a thin channel connecting the deep part of the basin with drying segment filled with salt and minerals offers a clear contrast with the parched brownish landscapes of savannah of the surroundings. In the dry months (June to August) the bare soil areas contrast with the images on wet season (March to May) with areas covered by lush vegetation. 
+
+Major technical characteristics of the satellite images common for all the scenes are as follows: Landsat Collection Category -- T1, Collection Number 2, Data Type L2 -- OLI\_TIRS\_L2SP; Sensor Identifier -- OLI/TIRS; Station Identifier -- LGN. The images were taken during day period with nadir on at Worldwide Reference System (WRS) Path 179, WRS Row -- 73 of the Landsat satellite. Product Map Projection L1 for all the scenes is Universal Transverse Mercator (UTM) Zone 33 for northern Namibia, with Datum and Ellipsoid - WGS84. The Ground Control Points (GCP) Version for all the images is 5. The images were preprocessed by the provider using Landsat Product Generation System (LPGS) Processing Software Version 15.6.0 for Landsat-8 scenes and 16.2.0 for Landsat-9 scenes, respectively. Technically, the LPGS generates the data products of Landsat in GeoTIFF output format using standard image parameters using Cubic Convolution (CC) resampling method and 30-m resolution in most of the spectral bands and a spatial coverage of 185 km swath for each scene. 
 
 Salinisation of the Etosha Pan is caused by seasonal fluctuations from dry to wet periods. During hot summer time, rains gradually slow and cease leaving the basin of the lake covered by crust of salt and minerals. Parched brownish landscapes in western and central parts of lake clearly contrast with the remaining segments of the lake still filled with water. Such changes are visible in the images in Figure \ref{fig03} where different colours of water varying from electric cyan to dark navy blue show the depths of the lake with darker shadows indicating deeper segments. The location of the more wet and deeper topographic ares in the eastern part of the basin well represents local climate setting of the Etosha where mean annual rainfall ranging from 250 mm/year in the west and up to 550 mm/year in the east \cite{Koeniger}. Green colours indicate mosaic vegetation in the surrounding landscapes, Figure \ref{fig03}. 
 
@@ -317,7 +373,7 @@ Overall, the results of RF classification using ensemble learning approach demon
 
 In this study, we applied data-driven ensemble learning methods of GRASS GIS using RF algorithm to image processing and elucidate seasonal variations in Etosha Pan basin from March to August utilizing a dataset of six Landsat 8-9 OLI/TIRS images for visualization of landscape dynamics, which included 10 different land cover type classes. We also proposed a hybrid ML workflow framework that combines traditional classification of the satellite images based on k-means clustering and maximal likelihood method and random forest (RF) ML method using Python's Scikit-Learn library embedded in GRASS GIS to assess the reliability of modelling and mapping. This approach was employed to classify a series of multispectral Landsat 8-9 OLI/TIRS images in order to indicate, detect and visualise the dynamics of water evaporation and the increase in salt pan in the Etosha basin, as well as to demonstrate changes in the lacustrine landscapes. 
 
-A novel hybrid ensemble learning ML method of GRASS GIS to image classification is presented and proposed for satellite image processing. This includes three major approaches which were tested and evaluated in this study: clustering with generating training pixels, traditional classification using maximum likelihood approach and Random Forest (RF) classification of ML. Additionally, the colour composites were created using several bands composites of Landsat. The classification accuracy was assessed using the computed confidence level of pixels assigned into ten major land cover classes around Etosha Pan. The RF algorithm provides the output of multiple decision trees to reach a classification of the satellite image. Thus, the hybrid classifier of prediction pattern evaluates the assignment of pixels on a raster scene using multiple decision trees.
+A novel hybrid ensemble learning ML method of GRASS GIS to image classification is presented and proposed for satellite image processing for analysis of changing environmental setting of the Etosha Pan located in northern Namibia. This includes three major approaches which were tested and evaluated in this study: clustering with generating training pixels, traditional classification using maximum likelihood approach and Random Forest (RF) classification of ML. Additionally, the colour composites were created using several bands composites of Landsat. The classification accuracy was assessed using the computed confidence level of pixels assigned into ten major land cover classes around Etosha Pan. The RF algorithm provides the output of multiple decision trees to reach a classification of the satellite image. Thus, the hybrid classifier of prediction pattern evaluates the assignment of pixels on a raster scene using multiple decision trees.
 
 The efficiency of environmental mapping that operate with the satellite images, especially for monitoring seasonal fluctuations in land cover types can now be improved by using the Machine Learning (ML) methods of Python integrated with cartographic tools. Thus, the analysis of scenes indicates that the evaporation of water during dry periods coincides with the cycle of flooding and evaporation in the north Namibia. During dry period, a mineral-encrusted salt pan covers the surface of basin which reaches its peak in August while the most water-filled period is in March. The comparison of these scenes as ML-classified satellite images show gradual development in salinization of the Etosha Pan basin during six consecutive months in 2022. The results of experiments demonstrate that RF has a high automation in image processing, accuracy in pixel assignments, increased details of classification with more fragmented identified patterns in the landscapes of norther Namibia. Compared to the clustering algorithm of unsupervised classification, random forest algorithm achieved the best performance in classification of the satellite images. The parameter values of the RF showed that most regions were identified correctly except for the occasional segments in the centre of the Etosha Pan basin.
 
@@ -333,43 +389,30 @@ Apart from technical application of the ensemble learning methods in cartography
 % EXAMPLE TABLE
 %
 % \begin{table}
-% \caption{Time of the Transition Between Phase 1 and Phase 2$^{a}$}
-% \centering
-% \begin{tabular}{l c}
-% \hline
-%  Run  & Time (min)  \\
-% \hline
-%   $l1$  & 260   \\
-%   $l2$  & 300   \\
-%   $l3$  & 340   \\
-%   $h1$  & 270   \\
-%   $h2$  & 250   \\
-%   $h3$  & 380   \\
-%   $r1$  & 370   \\
-%   $r2$  & 390   \\
+ %\caption{Time of the Transition Between Phase 1 and Phase 2$^{a}$}
+ %\centering
+ %\begin{tabular}{l c}
+ %\hline
+  %Run  & Time (min)  \\
+ %\hline
+  % $l1$  & 260   \\
+  % $l2$  & 300   \\
+  % $l3$  & 340   \\
+  % $h1$  & 270   \\
+  % $h2$  & 250   \\
+  % $h3$  & 380   \\
+  % $r1$  & 370   \\
+  % $r2$  & 390   \\
 % \hline
 % \multicolumn{2}{l}{$^{a}$Footnote text here.}
-% \end{tabular}
+ %\end{tabular}
 % \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SIDEWAYS FIGURES and TABLES
 % AGU prefers the use of {sidewaystable} over {landscapetable} as it causes fewer problems.
-%
-% \begin{sidewaysfigure}
-% \includegraphics[width=20pc]{figsamp}
-% \caption{caption here}
-% \label{newfig}
-% \end{sidewaysfigure}
-%
-%  \begin{sidewaystable}
-%  \caption{Caption here}
-% \label{tab:signif_gap_clos}
-%  \begin{tabular}{ccc}
-% one&two&three\\
-% four&five&six
-%  \end{tabular}
-%  \end{sidewaystable}
+%  
+ 
 
 %%% End of body of article
 
@@ -392,14 +435,20 @@ Apart from technical application of the ensemble learning methods in cartography
  \begin{acronyms}
  \acro{GEBCO}
  General Bathymetric Chart of the Oceans\\
+ \acro{CC}
+ Cubic Convolution \\
  \acro{GIS}
    Geographic Information Systems \\
      \acro{GRASS}
     Geographic Resources Analysis Support System \\
+    \acro{GCP}
+    Ground Control Points \\
    \acro{GMT}
     Generic Mapping Tools \\
    \acro{Landsat OLI/TIRS }
    Landsat Operational Land Imager and Thermal Infrared Sensor \\
+   \acro{LPGS}
+   Landsat Product Generation System \\
    \acro{FAO}
    Food and Agriculture Organization \\
    \acro{OBIA}
@@ -410,6 +459,10 @@ Apart from technical application of the ensemble learning methods in cartography
 Remote Sensing\\
       \acro{USGS}
     United States Geological Survey\\
+    \acro{WGS84}
+    World Geodetic System 1984\\
+    \acro{WRS}
+    Worldwide Reference System \\
 \end{acronyms}
 
 
