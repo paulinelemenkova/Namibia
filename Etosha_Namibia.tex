@@ -241,14 +241,9 @@ The original images are visualised in Figure \ref{fig03}. Major technical charac
 The colour composites of the dataset are presented in Figure \ref{fig04} with different combinations used as the RGB triplets from the Landsat bands. The raw dataset illustrates the environmental changes in Etosha Pan that fluctuates from the wet period when the lake is filled with water to the dry period when the basin becomes covered with a salt crust. 
 
 
-%----------- subsection ----------->
-\subsection{Subsection}
-
-%----------- subsection ----------->
-\subsection{Subsection}
 
 %----------- section ----------->
-\section{Results}
+\section{Results and DIscussion}
 
 \begin{figure}[H]
   \centering
@@ -272,12 +267,66 @@ The colour composites of the dataset are presented in Figure \ref{fig04} with di
   \label{fig06}
 \end{figure}
 
+The results of the present study present a map that shows the series of satellite images Landsat 8-9 OLI/TIRS on Etosha saline pan in order to evaluate the effectiveness of the novel module of GRASS GIS which is based on ensemble learning approach by RF algorithms for RS data processing. The comparative analysis of images presented by the time series of Landsat scenes taken in 2022 illustrated the process of water evaporation and its gradual replacement by salt and minerals during a calendar cycle from wet to dry periods in Namibia. In addition, we investigated the effects of several approaches to image classification using maximal likelihood (MaxLike) and random forest (RF) algorithms, i.e. the traditional pixel-based and object-based approaches, on classification results. The comparison of the results enabled to optimise image processing workflow using a series of the GRASS GIS modules including the ML components integrated with Scikit-Learn package of Python.
 
-%----------- section ----------->
-\section{Discussion}
+Figure \ref{fig05} shows the classification results for different images taken from wet period (March to May) and dry period (June to August) using band combinations of Landsat 8-9 OLI/TIRS. The 10 generalised land cover classes include the following types detected and identified using the maximal likelihood approach as a seed for the next random forest approach: 1) Mosaic vegetation / cropland 2) Aquatic or regularly flooded vegetation; 3) Bare areas and artificial surfaces; 4) Mixed broadleaved deciduous forests; 5) Open grassland; 6) Rainfed cropland; 7) Salt hardpans; 8) Water bodies (Etosha basin and other lakes); 9) Herbaceous vegetation, shrubland and thickets; 10) Sparse savannah grasslands. 
 
-%----------- section ----------->
+The RF classification demonstrated in Figure \ref{fig07} was calculated based on the classification (MaxLike) as a seed data in previous step, and yielded more robust and better results compared to the MaxLike. Thus, the landscape patches are more diversified and fragmented with more details detected for smaller polygons both within and beyond the lake area (compare Figure \ref{fig05} and \ref{fig07}). Compared to the performance of 'MaxLike' classification, Random Forest classified performed better in case of similar classes in terms of separability of adjacent landscape patches. For instance, the grasslands, salt hardpan area of Etosha and flooded areas clearly distinct from the mosaic trees and regions of broadleaved deciduous forests due to the different texture characteristics and spectral reflectance of pixels. 
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07a.jpg} \\
+    \small (a)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07b.jpg} \\
+    \small (b)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07c.jpg} \\
+    \small (c)
+     \end{tabular}
+     \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07d.jpg} \\
+    \small (d)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07e.jpg} \\
+    \small (e)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07f.jpg} \\
+    \small (f)
+  \end{tabular}
+  \caption{Results of the Random Forest (RF) classification using ML approach of GRASS GIS for the Landsat-8-9 OLI/TIRS images on Etosha Pan, Namibia: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022.}
+  \label{fig07}
+\end{figure}
+\vspace{2em}
+
+These classes were more easily segmented compared to the areas with similar parameters such as class 'sparse savannah grasslands' compared to class 'herbaceous vegetation, shrubland and thickets'. Therefore, the distributions of pixels according to spectral reflectances alone could only discriminate those regions that have distinct characteristics of brightness and spectral reflectance.
+
+As shown in Figure \ref{fig07}, distribution of spectral characteristics of diverse land cover types is affected by seasonal changes which is integrated with the effects from salinisation of the basin in dry periods from May onwards. Comparison of Figure  \ref{fig07} with Figure \ref{fig07} shows that RF yielded better results compared to the traditional classification using maximal likelihood. Thus, the performance of RF was further evaluated with several processed images. Thus, the ML model was trained and its performance was investigated using a non-random data partition approach of image classification. Instead of doing random data partition which splits the image into segments, the RF algorithm of GRASS GIS organised the raster image into different groups of classes according to the land cover types around Etosha, and then divided each scene using previously done training dataset obtained from the unsupervised automatic classification by clustering.
+
+Overall, the results of RF classification using ensemble learning approach demonstrated in Figure \ref{fig07} are more satisfying compared to the unsupervised classification despite the occasional pixels misclassification in some regions of central basin where over-fragmented mosaic of patches are visible. In general, the RF approach outperforms unsupervised clustering which can be explained by technical improvements of the ML methods. Specifically, ensemble learning approach is based on the adaptive integrating of land cover features based on automated recognition of spectral properties of pixels constituting raster scenes. 
+
 \section{Conclusions}
+
+In this study, we applied data-driven ensemble learning methods of GRASS GIS using RF algorithm to image processing and elucidate seasonal variations in Etosha Pan basin from March to August utilizing a dataset of six Landsat 8-9 OLI/TIRS images for visualization of landscape dynamics, which included 10 different land cover type classes. Etosha Pan is a salt landscape in northern Namibia with seasonal cycles in water level. Remote sensing (RS) data  processing is a useful tool for monitoring hydrological dynamics with image classification as the most common approach to identify changes. Ensemble learning approach with Random Forest (RF) classifier presents the example of Machine Learning (ML) advanced methods of image classification. This paper evaluates image classification methods using training algorithm of RF by GRASS GIS including the embedded Scikit-Learn ML library of Python. Land cover types around Etosha Pan were identified using classification of six multi-spectral Landsat 8-9 OLI/TIRS images collected in different seasons using modules of GRASS GIS 'r.learn.predict', 'r.random', 'r.learn.train', 'r.category', 'i.group'. This enabled to monitor the process of water evaporation during the transitional period. Comparative analysis revealed variations in the surface of basin from March to August when the basin is covered by the crust of salt and minerals. The series of maps made using GRASS GIS scripts demonstrated the opportunities of the ensemble learning tools to image processing. RF approach enable accurate image classification for environmental analysis of landscape dynamics. The ML method of image classification proposes an accurate tool for monitoring changes in the landscapes of Namibia.
+
+We also proposed a hybrid ML workflow framework that combines traditional classification of the satellite images based on k-means clustering and maximal likelihood method and random forest (RF) ML method using Python's Scikit-Learn library embedded in GRASS GIS to assess the reliability of modelling and mapping. This approach was employed to classify a series of multispectral Landsat 8-9 OLI/TIRS images in order to indicate, detect and visualise the dynamics of water evaporation and the increase in salt pan in the Etosha basin, as well as to demonstrate changes in the lacustrine landscapes. 
+
+A novel hybrid ensemble learning ML method of GRASS GIS to image classification is presented and proposed for satellite image processing for analysis of changing environmental setting of the Etosha Pan located in northern Namibia. This includes three major approaches which were tested and evaluated in this study: clustering with generating training pixels, traditional classification using maximum likelihood approach and Random Forest (RF) classification of ML. Additionally, the colour composites were created using several bands composites of Landsat. The classification accuracy was assessed using the computed confidence level of pixels assigned into ten major land cover classes around Etosha Pan. The RF algorithm provides the output of multiple decision trees to reach a classification of the satellite image. Thus, the hybrid classifier of prediction pattern evaluates the assignment of pixels on a raster scene using multiple decision trees.
+
+The efficiency of environmental mapping that operate with the satellite images, especially for monitoring seasonal fluctuations in land cover types can now be improved by using the Machine Learning (ML) methods of Python integrated with cartographic tools. Thus, the analysis of scenes indicates that the evaporation of water during dry periods coincides with the cycle of flooding and evaporation in the north Namibia. During dry period, a mineral-encrusted salt pan covers the surface of basin which reaches its peak in August while the most water-filled period is in March. The comparison of these scenes as ML-classified satellite images show gradual development in salinization of the Etosha Pan basin during six consecutive months in 2022. The results of experiments demonstrate that RF has a high automation in image processing, accuracy in pixel assignments, increased details of classification with more fragmented identified patterns in the landscapes of norther Namibia. Compared to the clustering algorithm of unsupervised classification, random forest algorithm achieved the best performance in classification of the satellite images. The parameter values of the RF showed that most regions were identified correctly except for the occasional segments in the centre of the Etosha Pan basin.
+
+With the development of ensemble algorithms presented by Scikit-Learn library of Python, RF is one of such approaches of ML that emerged and applied rapidly due to its effectiveness and applicability. Specifically for RS data processing, RF has been successfully applied to existing problem of classification due to its effectiveness, high level of automation and robustness. Although traditional classification methods using in mapping and GIS can effectively perform for satellite image processing, it has higher time-consuming performance. Moreover, the state-of-the-art image classification approaches depend on the regional landscape characteristics and specific property of land cover types. For instance, landscape heterogeneity, surface ruggedness, slope curvature and regional spatial complexity of land surface may affect the degree of fragmentation. In contrast, the Machine Learning (ML) algorithms are more efficient and straightforward in cartographic implementation in comparison with traditional ways of image classification. 
+
+The experimental results on processing and classification of six satellite images covering Etosha Pan indicate that the proposed RF algorithms of the ensemble learning methods of GRASS GIS is dominant in comparison with other methods. Thus, RF demonstrates the fast processing speed when dealing with multi-spectral images using functions of RS modules, 'r.learn.predict' and 'r.category'. When solving complex hybrid functions of 'r.learn.train' module, the RF shows its excellent exploration of the previous training dataset used as seed for the following classification. The extensibility of RF is represented in optimising the training pixels derived from the generated dataset by 'r.random' module with different heterogeneity of the landscapes that is expressed in fragmentation of patches. Besides superior performance, the time complexity of RF when used in GRASS GIS is acceptable compared with 'MaxLike' approach using 'i.maxlik' module as a traditional variant of image classification.
+
+This paper demonstrated the effective use of the RF method of image processing which was pitted against the other traditional classification methods such as k-means Clustering and Maximum Likelihood (MaxLike) of GRASS GIS. The use of such advanced solution helps in providing automated tools of satellite image processing and classification. Moreover, the feasibility of the RF algorithms enables to use it as an innovative approach that may be used in practise for diverse types of satellite images, including Sentinel, SPOT and other imagery. The outcome of the framework in the GRASS GIS based image processing using ensemble learning is the output of the series of the classified satellite images processed using decision criteria analysis of ML algorithms. To enhance its application in similar future studies, the RF classifiers technique can be applies as effective ML tools of the GRASS GIS modules to processing Earth observation data for operative environmental monitoring.
+
+Apart from technical application of the ensemble learning methods in cartography and using RF algorithm of GRASS GIS for modelling RS data, this study demonstrated the usefulness of the satellite images as a data source for environmental monitoring. Specifically, time series analysis enable to monitoring and detect cycles of flooding and droughts in the ecosystems of Africa. The series of several Landsat-8 OLI/TIRS satellite images processed in this study by ensemble learning techniques illustrated the process of intense evaporation of water over Etosha Pan, northern Namibia. This study contributed to the environmental monitoring of Etosha Pan through the analysis of the satellite images taken on different time period. Time series analysis of the RS data supports visualising the dynamics of droughts in Africa. In turn, environmental monitoring is supportive for preserving the ecosystem of Etosha National Park in Namibia where rare species such as elephants, lions or rhinos, depend on the availability of water in Etosha and have to adapt to its seasonally changing environment. 
 
 %----------- section ----------->
 \authorcontributions{Supervision, conceptualization, methodology, software, resources, funding acquisition, and project administration, writing---original draft preparation, methodology, software, data curation, visualization, formal analysis, validation, writing---review and editing, and investigation, P.L.}
@@ -327,7 +376,7 @@ All appendix sections must be cited in the main text. In the appendices, Figures
 %=====================================
 % References, variant A: external bibliography
 %=====================================
-\bibliography{Bibliography.bib}
+\bibliography{Namibia.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{adjustwidth}
