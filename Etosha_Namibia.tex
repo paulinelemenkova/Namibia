@@ -240,7 +240,130 @@ The original images are visualised in Figure \ref{fig03}. Major technical charac
 
 The colour composites of the dataset are presented in Figure \ref{fig04} with different combinations used as the RGB triplets from the Landsat bands. The raw dataset illustrates the environmental changes in Etosha Pan that fluctuates from the wet period when the lake is filled with water to the dry period when the basin becomes covered with a salt crust. 
 
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04a_754.jpg} \\
+    \small (a)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04b_234.jpg} \\
+    \small (b)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04c_345.jpg} \\
+    \small (c)
+     \end{tabular}
+    \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04d_753.jpg} \\
+    \small (d)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04e_345.jpg} \\
+    \small (e)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04f_234.jpg} \\
+    \small (f)
+     \end{tabular}
+     \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04g_357.jpg} \\
+    \small (g)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04h_156} \\
+    \small (h)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04i_741.jpg} \\
+    \small (i)
+     \end{tabular}
+  \caption{Examples of different combinations of the created colour composites highlighting the Etosha Pan, Namibia. The images are generated based on triplets of Landsat 8-9 OLI/TIRS bands on 2022, using 'r.composite' module of GRASS GIS: \textbf{(a)}: March: Bands 7-5-3;\textbf{(b)}: March: Bands 2-3-4; \textbf{(c)}: March: Bands 3-4-5; \textbf{(d)}: April: Bands 7-5-4;\textbf{(e)}: April: Bands 3-4-5; \textbf{(f)}: April: Bands 3-4-5; \textbf{(g)}: May: Bands 3-5-7; \textbf{(h)}: June: Bands 1-5-6; \textbf{(i)}: August: Bands 7-4-1.}
+  \label{fig04}
+\end{figure}
 
+\pagebreak
+In the set of false colour and natural colour composites of images shown in Figure \ref{fig04}, the bright colours of the remaining water and a thin channel connecting the deep part of the basin with drying segment filled with salt and minerals offers a clear contrast with the parched brownish landscapes of savannah of the surroundings. In the dry months (June to August) the bare soil areas contrast with the images on wet season (March to May) with areas covered by lush vegetation. 
+
+Major technical characteristics of the satellite images common for all the scenes are as follows: Landsat Collection Category -- T1, Collection Number 2, Data Type L2 -- OLI\_TIRS\_L2SP; Sensor Identifier -- OLI/TIRS; Station Identifier -- LGN. The images were taken during day period with nadir on at Worldwide Reference System (WRS) Path 179, WRS Row -- 73 of the Landsat satellite. Product Map Projection L1 for all the scenes is Universal Transverse Mercator (UTM) Zone 33 for northern Namibia, with Datum and Ellipsoid - WGS84. The Ground Control Points (GCP) Version for all the images is 5. The images were preprocessed by the provider using Landsat Product Generation System (LPGS) Processing Software Version 15.6.0 for Landsat-8 scenes and 16.2.0 for Landsat-9 scenes, respectively. Technically, the LPGS generates the data products of Landsat in GeoTIFF output format using standard image parameters using Cubic Convolution (CC) resampling method and 30-m resolution in most of the spectral bands and a spatial coverage of 185 km swath for each scene. 
+
+Salinisation of the Etosha Pan is caused by seasonal fluctuations from dry to wet periods. During hot summer time, rains gradually slow and cease leaving the basin of the lake covered by crust of salt and minerals. Parched brownish landscapes in western and central parts of lake clearly contrast with the remaining segments of the lake still filled with water. Such changes are visible in the images in Figure \ref{fig03} where different colours of water varying from electric cyan to dark navy blue show the depths of the lake with darker shadows indicating deeper segments. The location of the more wet and deeper topographic ares in the eastern part of the basin well represents local climate setting of the Etosha where mean annual rainfall ranging from 250 mm/year in the west and up to 550 mm/year in the east \cite{Koeniger}. Green colours indicate mosaic vegetation in the surrounding landscapes, Figure \ref{fig03}. 
+
+\subsection{ML framework}
+
+The GRASS GIS ML framework of image processing described below was employed to map seasonal variations in the Etosha Pan using six satellite multispectral Landsat 8-9 OLI/TIRS images with one-month time span. Image analysis was performed on Landsat scenes taken on different time span from April to August where the texture of land cover types in highly diversified due to the natural processes of water evaporation from the basin and drying lake. The detected landscape dynamics enabled to demonstrate the robustness of the RF-based classification method to monitoring seasonal variations using Earth observation data. Moreover, several colours composites were generated using GRASS GIS module 'r.composite' since such band combinations of the multispectral images detail features on the land surface  and provide more information compared to the monochrome bands taken separately. The performance of the both RF and MaxLike methods of image classification was visualised, compared  and evaluated with six 30-m resolution multi-spectral Landsat OLI-TIRS multispectral satellite images with the results shown as colour classified images in Figure \ref{fig05} and Figure \ref{fig07}. 
+
+The class distribution of pixels in the original multispectral colour images were computed and summarised by module of GRASS GIS in the statistical report for each image. Colour composites were generated for classification approach based on information on pixel reflectance derived automatically using computer vision algorithms during the classification processes for maximum likelihood and random forest algorithms, respectively. We used the class separability matrix for extraction of pixels according to the computed feature classes using several iterations. The number of stable points were computed for each image, and the convergence represented more than 98\% for each scene. The signature file for each image was generated using data on spectral signatures which measures the similarity  of pixels Digital Numbers (DN) for assignment to classes. This approach was applied to the whole classification process during the MaxLike procedure. We computed the classes using the clustering methods followed by the MaxLike algorithms and got the seed for the next step of Random Forest (RF) algorithm which labelled these pixels assigned to different classed to obtain the classified map in GRASS raster format. 
+
+Random Forest (RF) function algorithm of ensemble learning was derived from the embedded Python's library of Scikit-Learn and used to test the simulation of the satellite image time series on Etosha Pan region, Namibia. 
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05a.jpg} \\
+    \small (a)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05b.jpg} \\
+    \small (b)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05c.jpg} \\
+    \small (c)
+     \end{tabular}
+     \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05d.jpg} \\
+    \small (d)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05e.jpg} \\
+    \small (e)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05f.jpg} \\
+    \small (f)
+  \end{tabular}
+  \caption{Classification of the Landsat-8-9 OLI/TIRS images covering the Etosha Pan region, Namibia using 'MaxLike' method: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022.}
+  \label{fig05}
+\end{figure}
+\vspace{2em}
+
+The trained pixels were obtained from the 'RandomForestClassifier' algorithms connected to the Scikit-Learn libraries of Python \cite{Pedregosa} embedded with GRASS GIS ML function of image analysis. The RF is a type of bagging algorithm of image classification that uses the Machine Learning (ML) methods of the classification and regression tree decision as learners. The randomness of data points in a raster image evaluated in this algorithm is assessed for reducing model variance. As a result, the advantages of the RF consists in excellent generalisation approach to data classification which combines the results of multiple decision trees to reach a single classification result through anti-overfitting. 
+
+In the process of RF refinement, the following procedures were completed using supervised learning model 'RandomForestClassifier'. First, training areas were created from the 'trainingmap' where the results of the clustering raster map with labelled pixels assigned to 10 classes were used as balanced training data using class weights. Such adjustment enabled to automatically refine weights inversely proportional to class frequencies of pixels in each raster of the classified Landsat image. Second, the standardised feature variables were converted into values of zero mean and unit variance to reduce the complexity of computations. Next, the classification results (see Figure \ref{fig07}) show that spectral distributions of the pixels discriminated some regions within the Etosha Pan more precisely compared to the MaxLike and clustering approaches. The class probabilities were predicted using 'r.learn.predict' module. Third, feature importances were computed using permutation of pixels which were placed in a discrete raster around the boundary study area  to increase the accuracy of computation. 
+
+The accuracy analysis is demonstrated in Figure \ref{fig06} which shows the rejection probability for classified pixels. The cluster parameters used for evaluating spectral similarity of the adjacent classes was computed by the statistical reports generated by GRASS GIS during classification. The number of initial classes was set to 10 according to the major land cover types in the Etosha Pan basin and used to calculate percent convergence for each image. Other statistical values included estimated minimum class size and class separation for each image, sampling interval. The standard deviations and means for seven bands of image regions were employed to evaluate the weights of the spectral reflectance of pixels and texture features represented on the images. The initial means for each band of the textured mosaic images were computed for each image composed of the classified images of the texture composites. 
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06a.jpg} \\
+    \small (a)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06b.jpg} \\
+    \small (b)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06c.jpg} \\
+    \small (c)
+     \end{tabular}
+     \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06d.jpg} \\
+    \small (d)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06e.jpg} \\
+    \small (e)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06f.jpg} \\
+    \small (f)
+  \end{tabular}
+  \caption{Accuracy assessment using the rejection probability for pixels classified for Landsat-8-9 OLI/TIRS images on the Etosha Pan region, Namibia: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022.}
+  \label{fig06}
+\end{figure}
+\vspace{2em}
 
 %----------- section ----------->
 \section{Results and DIscussion}
@@ -331,26 +454,39 @@ Apart from technical application of the ensemble learning methods in cartography
 %----------- section ----------->
 \authorcontributions{Supervision, conceptualization, methodology, software, resources, funding acquisition, and project administration, writing---original draft preparation, methodology, software, data curation, visualization, formal analysis, validation, writing---review and editing, and investigation, P.L.}
 
-\funding{The publication was funded by the Editorial Office of XXXX, Multidisciplinary Digital Publishing Institute (MDPI), by providing 100\% discount for the APC of this manuscript.}
+\funding{The publication was funded by the Editorial Office of Climate, Multidisciplinary Digital Publishing Institute (MDPI), by providing 100\% discount for the APC of this manuscript.}
 
 \institutionalreview{Not applicable.}
 
 \informedconsent{Not applicable.}
 
-\dataavailability{Not applicable} 
+\dataavailability{The data supporting the conclusions can be obtained from the publicly available USGS databases service of the satellite image repository: https://earthexplorer.usgs.gov/ . Figure 1 was plotted using Generic Mapping Tools (GMT) scripts using GEBCO-2023 data. Figure 2 was created using QGIS using FAO data. Figures 3 to 7 were created using the GRASS GIS scripts using processed satellite images Landsat 8-9 OLI/TIRS, USGS. } 
 
-\acknowledgments{The authors thank the reviewers for reading and review of this manuscript.}
+\acknowledgments{The authors thank the reviewers for reading and helpful review of this manuscript.}
 
-\conflictsofinterest{The authors declare no conflict of interest.} 
+\conflictsofinterest{The author declares no conflicts of interest relevant to this study.} 
 
 \abbreviations{Abbreviations}{
 The following abbreviations are used in this manuscript:\\
 
 \noindent 
 \begin{tabular}{@{}ll}
-MDPI & Multidisciplinary Digital Publishing Institute\\
-DOAJ & Directory of open access journals\\
-LD & Linear dichroism
+MDPI & Multidisciplinary Digital Publishing Institute \\
+GEBCO & General Bathymetric Chart of the Oceans \\
+CC & Cubic Convolution \\
+GIS & Geographic Information Systems \\
+GRASS & Geographic Resources Analysis Support System \\
+GCP & Ground Control Points \\
+GMT & Generic Mapping Tools \\
+Landsat OLI/TIRS & Landsat Operational Land Imager and Thermal Infrared Sensor \\
+LPGS & Landsat Product Generation System \\
+FAO & Food and Agriculture Organization \\
+OBIA & Object Based Image Analysis \\
+RF & Random Forest \\
+RS & Remote Sensing \\
+USGS & United States Geological Survey \\
+WGS84 & World Geodetic System 1984 \\
+WRS & Worldwide Reference System \\
 \end{tabular}
 }
 
