@@ -1,0 +1,549 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[climate,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
+
+%=================================================================
+%----------
+% journal
+
+% MDPI internal commands
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2025}
+\copyrightyear{2025}
+%\externaleditor{Academic Editor: Firstname Lastname}
+\datereceived{25 February 2025} 
+\daterevised{}
+\dateaccepted{} 
+\datepublished{} 
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+\graphicspath{{figures/}} % path to folder with figures
+\usepackage{subcaption}
+\usepackage{rotating}
+\usepackage{dcolumn}
+\usepackage{tablefootnote}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{gensymb} % for \textdegree
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\usepackage{amsmath,mathtools,amsthm}
+	\setcounter{MaxMatrixCols}{15}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{chngcntr}
+\counterwithin*{equation}{section}
+\usepackage[super]{nth}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{adjustbox}
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepblue},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{Ensemble Learning Methods of Image Classification Using GRASS GIS for Mapping Seasonal Fluctuations in Etosha Pan, Namibia}
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{Ensemble Learning Methods of Image Classification Using GRASS GIS for Mapping Seasonal Fluctuations in Etosha Pan, Namibia}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{Polina Lemenkova $^{1}$*\orcidA{}}
+
+%\longauthorlist{yes}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Polina Lemenkova}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{Lemenkova, P.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+$^{1}$ \quad Alma Mater Studiorum -- Università di Bologna, Department of Biological, Geological and Environmental Sciences, Via Irnerio 42, Bologna, Emilia-Romagna, Italy, IT-40126. ORCID- 0000-0002-5759-1089, (P.L.).
+}
+
+% Contact information of the corresponding author
+\corres{Correspondence: polina.lemenkova2@unibo.it ; Tel.: +39-3446928732 (P.L.)}
+
+% Current address and/or shared authorship
+%\firstnote{Current address: Affiliation 3.} 
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{Ephemeric desert lakes exhibit high fluctuation in salinity and water level that depend on the oscillations of climatic parameters – temperature and precipitation. Understanding these rhythms in seasonal lakes of southern Africa is of high interest to a variety of audiences including environmental planners, climate analysts, and policy makers in protected areas. In this paper, we present a Machine Learning (ML) application for image analysis for visualization and processing of Earth observation data collected from the United States Geological Survey (USGS). The case study is focused on Etosha pan which is a large salt pan located in northern Namibia, Africa. It is a vast basin in the land surface where water collects seasonally depending on rains and evaporates during dry periods with the surface covered by salt and minerals. Satellite image classification presents an effective method for monitoring these changes using a comparison of several scenes collected during dry and wet periods. While traditional classification methods are usually based on the Geographic Information Systems (GIS) tools, a novel tool of Machine Learning (ML) presents a more effective, automated and accurate approach to image processing. This paper presents the application of one of the ML methods using Random Forest (RF) algorithms of Geographic Resources Analysis Support System (GRASS) GIS which utilises the embedded libraries of Python Scikit-Learn for image processing. The results show landscape dynamics in Etosha Pan from March to August in 2022 using a series of Landsat satellite images classified by RF method.}
+
+% Keywords
+\keyword{Ephemeric lake; machine learning; image analysis; climate change; Earth observation; GIS; desert; data analysis; random forest; Python} 
+
+% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
+%\PACS{J0101}
+%\MSC{}
+%\JEL{}
+
+\begin{document}
+
+\section{Introduction}
+
+\subsection{General background}
+Droughts caused by climate change and exacerbated by the ongoing El Ni\~no processes in the Pacific Ocean affect fragile ecosystems in the northern Namibia. These ecosystems have high importance for human water resources and the local and mesoscale climate. Besides, grasslands and forests in coastal areas of Namibia are ecologically significant for southwest Africa, due to their primary role in maintaining balance of unique biodiversity and resilience of vulnerability to climate change. While previous studies have measured different components of the water balance, little is known about the frequency and influence of seasonal effects of droughts on landscapes surrounding saline Etosha lake and the role of salt balance in the water balance. In this study, we performed a Machine Learning (ML) - based analysis of satellite imagery to visualise and evaluate fluctuations of the Etosha lake using seasonal series of satellite imagesg.
+
+\subsection{Water balance in savannah aquifers of Namibia: groundwater discharge and recharge }
+
+Groundwater represent an essential source of water availability in Namibia, a role expected to become even more crucial under climate change conditions. Vegetation interacts profoundly with the water cycle captured from ground water, influencing both water availability for human needs and the distribution between sensible heat and latent heat, therefore interacting with the radiative forcing feedback mechanism. For instance, in desert regions of central Namibia, the primary cause of land desertification and land cover change is degradation of vegetation \cite{Hossain}. {In turn, one of the main causes of vegetation deterioration is water stress. The water cycle mechanisms are inextricably linked to the water required for vegetation development} \cite{Irob,Inman}. {In turn, they are influenced by climate change, seasonal variations and effects of El Nino. Mountain regions of Namibia and temporal lakes are of essential sources of water with an impact extending far wider than their actual range} \cite{,UUGULU2020102844,LI2018202}. {However, they are also strongly affected by climate change with past and projected warming exceeding the global average} \cite{MAPANI2023104749,MAPANI2008674}.
+
+{Measurements of the water balance components in Namibia in context of droughts and climate change are usually surrounded by considerable uncertainties} \cite{Verlinden}. {Meanwhile, the numerical assessment of water balance components using satellite images and ML methods is crucial for sustainable management of water basin and analysis of water cycle in a Namibia - a country with extremely arid climate and persistent droughts. Such components as unpredictable and variable rainfall patterns, as well as high temperature variability and scarcity of water, characteristics for Namibia, have been affected by climate change in arid environment over the recent years.}
+
+{In hydrological approaches with a focus on saline lakes in Namibia, water balance is widely based on simplifications and model generalisations. Existing experimental studies where the different components of the water cycle in ephemeral rivers and lakes that are flooded for short period and their seasonal fluctuations are directly measured are scarce. A modeling technique is often used to evaluate one or more of the balance's components indirectly.} \cite{Dansie}. {The same happens concerning flux partition techniques. Meanwhile, major atmospheric boundary fluxes such as evapotranspiration (evaporation and transpiration) and irrigation and the lower boundary fluxes above the saline lakes such as soil percolation are essential elements of water balance and environmental sustainability of mountainous forests. This requires to study the mechanisms of their functions within water cycle\hl{.}
+
+{In ecohydrology, the water balance is resolved by separating evapotranspiration into evaporation from surfaces inside the forest or savannah landscapes and transpiration by the vegetation} \cite{MORGAN2020104220,ZADOROVA2025108671}. {While transpiration and soil evaporation can be measured directly through sapflow sensors, e.g., using canopy chambers, evaporation from salt lakes and ephemeral rivers can only be estimated indirectly or through modelling and simulation techniques. Thus, there are still major uncertainties to be resolved in this issue. For example, concerning the rate of wet canopy evaporation estimated from eddy covariance measurements or as the differences between precipitation, throughfall and stemflow in arid lands, or those using the conventional Penman-Monteith-equation by a factor of two or more} \cite{NOURANI2025113012,AHMADI2021106622,ABDULLAH2015184}. {Nevertheless, remote sensing data present robust technique and source of information for modelling water fluctuations in the salt lakes.}
+
+With numerous applications in the environmental and Earth science sector, many studies are currently investigating the applicability of programming algorithms in processing Remote Sensing (RS) data \cite{10080513,10334172,Lemenkova202227,9964623,jimaging9050098,9393066}. On the one hand, the availability of the RS data supported by the increasingly rising pool of Earth observation sensors and products of satellite missions, both commercial and open, brings new opportunities to the thematic mapping. On the other hand, such challenges require the development of the advanced methods for processing these datasets, as discussed earlier \cite{JASIEWICZ20111525}. In this regards, ML presents significant benefits and opportunities compared to the traditional cartographic methods possible using Geographic Information Systems (GIS). For instance, due to the introduced training and randomness in raster data processing ensured by computer-vision algorithms of automated image analysis, ML enables to avoid subjectivity in image classification.{ } 
+
+Ensemble learning approach of image processing is the method of image processing that applies several learning paradigms to achieve high-performance satellite image processing. The effects of the ensemble learning resulting in the improved cartographic outputs approach can be explained by the integrated power of different tools which bring their benefits to the workflow compared to these algorithms when used alone. In ML-based satellite image analysis, the ensemble learning includes a series of alternative models, such as RF or decision trees, ensuring a more adjusted workflow. Specifically in computer vision, using ensemble learning methods of ML is an essential part of automated image analysis and mapping based on these images. Such benefits of ML for cartographic workflow have been reported in some publications in recent decades \cite{YOO2019155,SINGH2021100624,MULIK2023106697}. However, the suitability of specific software that includes these methods as embedded algorithms for image processing requires more attention. In RS techniques, two major methods have been discussed and compared recently, including supervised \cite{GOLDBLATT2018253,MARTINEZMONTOYA2010978,INZANA200359} or unsupervised \cite{SHIH199497,LU2023116898,Lemenkova202322} approaches to satellite image classification.
+
+\subsection{Objective and motivation}
+
+{This research aims to build a workflow for satellite image processing using ensemble learning techniques of Random Forest (RF) algorithm. Based on integrating several ML approaches, it includes the decision trees algorithm with controlled variance that improves the accuracy of image partition. Technically, the research is performed using the ML-based modules of the Geographic Resources Analysis Support System (GRASS) GIS software using existing methods} \cite{lemenkova2025automation}. The aim of this study is to dissect the effects of seasonal water/salt fluctuations in the Etosha Pan of northern Namibia on spatial heterogeneity and patterns of the land cover patches in the surrounding lacustrine landscapes. 
+
+The {practical }goal of this study is to apply the scripting techniques of GRASS GIS with the objective to assess the novel method of ensemble learning with a case of RF algorithms applied to cartographic workflow. The RF approach was selected as valuable methods since it uses the computer vision approaches that have the anti-noise capacity which is useful for image processing used for mapping changing in basin from evaporated to flooding period. Such benefits are useful when processing satellite data with high spectral heterogeneity and landscape fragmentation such as northern Namibia. Furthermore, the RF techniques consider spectral properties of data obtained from diverse sensors such as surface forms, texture of land parcels, topology and pattern heterogeneity. This enables to process and analysis complex landscape patterns in diversified environmental regions. In view of this, the use of the ML by GRASS GIS is considered a key step in the development of cartographic tools of the RS data processing.
+
+{In this way,} we evaluate its functionality of the machine learning tools of GRASS GIS and their applicability in RS data processing to classification of multispectral satellite images. A motivation of this study is to perform environmental analysis of the Etosha salt pan, northern Namibia, with the aim to explore the climatic and seasonal factors that affect the water availability in the basin. The paper is organised as follows. Chapter 2 explains the ensemble learning method with RF approach to RS data processing. The methodology is presented in snippets of GRASS GIS code. In the following section, the results of image classification are presented. Finally, the last section concludes the paper with the discussion regarding the landscapes and climate-related land cover changes in the Etosha Pan, northern Namibia.
+
+%\pagebreak
+\section{Study Area}
+The study area is focused on the saline Etosha Pan, Figure \ref{fig01}. 
+ 
+ \setlength{\belowcaptionskip}{-10pt}
+ \begin{figure}[H]
+	\noindent\includegraphics[width=\textwidth]{Fig_01.jpg}
+\caption{Topographic map of Namibia with indicated study area: Etosha Pan. Mapping software: Generic Mapping Tools (GMT). Map source: author.}
+\label{fig01}
+\end{figure}
+
+Etosha Pan belongs to the Cuvelai-Etosha Basin, a transboundary wetland area within the topographic depression located between the southern Angola and northern Namibia. The basin developed from the Palaeolake Etosha since Tertiary and presents the depression that collects waters from three drainage systems off the Angolan highlands, the Cubango and the Cuvelai Drainage System \cite{MILLER}. The topography of the region is generally flat which causes the diurnal oscillation of wind and variations in thermo-topographical gradients \cite{Preston}. Highly changing hydro-geomorphological setting of the deltaic drainage system of Etosha Pan lead to the regular fluctuations of the water level where lake changes from a basing flooded by water to a completely dry pan covered by crust salt and minerals \cite{Hipondoka}. 
+
+{Etosha lasine lake can represent an additional source of water in northern Namibia, not quantified by the commonly used methods, to the overall water input. Saline lakes play a role of a water condensate which is formed in larger quantities at higher temperatures. For example, in arid ecosystems with high and constant frequency of droughts, the occurrence of higher temperatures and raindrops creates favourable conditions for such processes. This can be illustrated by the saline Cuvelai basin, where mixing of fresh and old saline groundwater contribute to the hydrogeochemical and multi-environmental water balance}
+\cite{BAUMLE2024101721}. {However, the relevance of saline aquifers for the water balance of arid landscapes of Namibia is still largely unknown.}
+
+{The amount of water intercepted by the saline lake of Namibia in diverse seasons varies with temperature, wind and duration of droughts. Depending on these characteristics, for instance, severe heat waves, changing weather patterns is a major predictor of water interception rates. Nevertheless, important features are the occurrence of droughts and duration of the period withour stable precipitation which may intercept high amounts of water going to groundwater. Thus, they store water inside the lake, sustain evapotranspiration in the surrounding vegetation, decrease the ratio of water, and increase the air humidity. }Climate-related hazards such as frequent and severe droughts, unstable water inflow and extreme temperatures typical for arid and semi-arid climate of Namibia affect rare species that use Etosha as shelter habitat \cite{cli5030051}. 
+
+To preserve the world-renowned resources of vulnerable and fragile ecosystem around Etosha Pan, nature conservation measures and policies in Namibia were undertaken. This lead to the creation of the natural reserve of the Etosha National Park aimed at regulating the negative effects from agriculture activities, livestock husbandry, overgrazing, and tourism \cite{Gargallo,Novelli}. Landscapes of the Etosha National Park are dominated by the distribution of dry savannah which is a typical environmental characteristics of Namibia. Nevertheless, the variations of vegetation classes is highly fragmented which depends on the inter‐seasonal variations, availability of moisture and correlate with the actual rainfall situation \cite{Wagenseil}. The detailed land cover types are visualised on the map in Figure \ref{fig02}.
+
+ \begin{figure}[H]
+	\noindent\includegraphics[width=\textwidth]{Fig_02.jpg}
+\caption{Land cover types of Namibia according to  Food and Agriculture Organizatio (FAO). Mapping software: QGIS. Map source: author.}\setlength{\belowcaptionskip}{-30pt}
+\label{fig02}
+\end{figure}
+
+Oscillations in hydrological patterns from flooding to complete desiccation indicate the progressively increasing aridity and desertification of the Etosha basin affected by regional droughts, impacts from the Kalahari Desert and climate change. Two distinct seasons - dry from April to September and wet from October to March - distinctly divide the climate and environmental patterns while the intra-seasonal water influx is unstable and depend on the ephemeral streams forming occasional pools \cite{Himmelsbach}. At the same time, unique landscapes of Etosha create a habitat for ecosystems used by migrating birds and rare species as habitats \cite{Fox,LeRoux,Berry}. The ability of wetland birds such as flamingos to predict rain fronts and showers using changes in pressure gradients enables them to rapidly find water available in ephemeral reservoirs and pools of Etosha. This results in the significant number of migrating rare birds that use the Etosha as a destination place during severe droughts in other regions \cite{Simmons}. 
+
+%----------- section ----------->
+\section{Materials and Methods}
+ 
+In the workflow of image processing, the Landsat images are computed by a GRASS GIS software which presents a powerful toolset for image analysis \cite{GRASS_GIS_software}. Its excellent and diversified functionality in image processing are reflected in many reported studies which use Earth observation data processed by diverse modules of GRASS GIS \cite{HOFIERKA2009387,lemenkova2024exploitation,Lemenkova202320,ROCCHINI201382,Lemenkova202313,JASIEWICZ20111162}. The Generic Mapping Tools (GMT) \cite{Wessel} is adopted to map topographic information and visualise the location of the study area using overlaid extent of the multispectral Landsat images, Figure \ref{fig01}. More specifically, the GMT was used using scripting techniques reported and described in earlier works \cite{Lemenkova202203,Lemenkova202217}. Here the extent of the images is denoted by the rotated square showing the location of the Landsat scenes. Their coordinates were derived from the metadata and correspond to the technical parameters of the Landsat mission. The QGIS software was used for land cover mapping to represent the geospatial information of the landscapes in northern Namibia, Figure \ref{fig02}. 
+
+\subsection{Data}
+{In this study, we seek to assess the feasibility of measuring  water level and associated land cover changes around the Etosha lake using Remote Sensing (RS) data. Besides, we evaluate the relative contribution of the water components through seasonal changes in the balance at the catchment level detectable on the RS data, to estimate the water balance in the Etosha basin during a short-term period of 2022. Practically, we use a series of satellite images to estimate, for the first time, the areas of changes in the lake basing according to the annual water balance and all of its components based on data measured in 2022 using RS data.} The original images are visualised in Figure \ref{fig03}. 
+
+{Specifically, we apply Landsat imagery to better understand the potential influence of clime effects on lake level during diverse seasons of 2022, and the associated fluctuations of the drying land areas in the shoreline of Etosha on the water balance. }Major technical characteristics that differ for each Landsat scene are provided in Table \ref{tab01}. The data were obtained from the EarthExplorer repository of the United States Geological Survey (USGS) and included six satellite images of the Landsat 8-9 Operational Land Imager and Thermal Infrared Sensor (Landsat 8-9 OLI/TIRS). 
+
+Major technical characteristics of the satellite images common for all the scenes are as follows: Landsat Collection Category -- T1, Collection Number 2, Data Type L2 -- OLI\_TIRS\_L2SP; Sensor Identifier -- OLI/TIRS; Station Identifier -- LGN. The images were taken during day period with nadir on at Worldwide Reference System (WRS) Path 179, WRS Row -- 73 of the Landsat satellite. Product Map Projection L1 for all the scenes is Universal Transverse Mercator (UTM) Zone 33 for northern Namibia, with Datum and Ellipsoid - WGS84. The Ground Control Points (GCP) Version for all the images is 5. The images were preprocessed by the provider using Landsat Product Generation System (LPGS) Processing Software Version 15.6.0 for Landsat-8 scenes and 16.2.0 for Landsat-9 scenes, respectively. Technically, the LPGS generates the data products of Landsat in GeoTIFF output format using standard image parameters using Cubic Convolution (CC) resampling method and 30-m resolution in most of the spectral bands and a spatial coverage of 185 km swath for each scene. 
+
+\begin{sidewaystable}
+%\caption{Metadata for Landsat images}
+ \label{tab01}
+ \resizebox{0.9\textwidth}{!}{%
+%\tiny
+%\small
+%\scriptsize
+\footnotesize
+\setlength\tabcolsep{2pt}
+\begin{tabular}{|l|l|l|l|l|l|l|}    
+ine
+      	\textbf{Landsat Scene Identifier} & \textbf{LC81790732022085LGN00} & \textbf{LC81790732022101LGN00} & \textbf{LC91790732022125LGN01} & \textbf{LC91790732022157LGN01} & \textbf{LC81790732022197LGN00} & \textbf{LC91790732022221LGN01} \\ ine
+        \textbf{Date Acquired} & 2022/03/26 & 2022/04/11 & 2022/05/05 & 2022/06/06 & 2022/07/16 & 2022/08/09 \\ ine
+        \textbf{Roll Angle} & 0.000 & 0.000 & 0.001 & 0.000 & -0.001 & 0.000 \\ ine
+        \textbf{Date Product Generated L2} & 2022/03/30 & 2022/04/19 & 2023/04/17 & 2023/04/14 & 2022/07/26 & 2023/04/03 \\ ine
+        \textbf{Date Product Generated L1} & 2022/03/30 & 2022/04/19 & 2023/04/17 & 2023/04/14 & 2022/07/26 & 2023/04/03 \\ ine
+        \textbf{Start Time} & 2022-03-26 08:55:28.788292 & 2022-04-11 08:55:30.641875 & 2022-05-05 08:55:23 & 2022-06-06 08:55:13 & 2022-07-16 08:55:54 & 2022-08-09 08:55:50 \\ ine
+        \textbf{Stop Time} & 2022-03-26 08:56:00.558292 & 2022-04-11 08:56:02.411875 & 2022-05-05 08:55:55 & 2022-06-06 08:55:45 & 2022-07-16 08:56:26 & 2022-08-09 08:56:22 \\ ine
+        \textbf{Land Cloud Cover} & 1.32 & 2.17 & 4.72 & 7.61 & 7.33 & 2.09 \\ ine
+        \textbf{Scene Cloud Cover L1} & 1.32 & 2.17 & 4.72 & 7.61 & 7.33 & 2.09 \\ ine
+        \textbf{Ground Control Points Model} & 655 & 731 & 757 & 770 & 770 & 764 \\ ine
+        \textbf{Geometric RMSE Model} & 6.052 & 5.435 & 4.999 & 5.096 & 4.984 & 4.731 \\ ine
+        \textbf{Geometric RMSE Model X} & 4.294 & 3.929 & 3.628 & 3.534 & 3.632 & 3.393 \\ ine
+        \textbf{Geometric RMSE Model Y} & 4.265 & 3.755 & 3.440 & 3.671 & 3.413 & 3.297 \\ ine
+        \textbf{Sun Elevation L0RA} & 52.82328395 & 49.80572103 & 44.79448536 & 39.50399786 & 39.59460724 & 43.81050644 \\ ine
+        \textbf{Sun Azimuth L0RA} & 58.84443485 & 50.14840089 & 40.94078960 & 36.09442691 & 38.72515388 & 43.52123333 \\ ine
+        \textbf{TIRS SSM Model} & FINAL & FINAL & N/A & N/A & FINAL & N/A \\ ine
+        \textbf{Satellite} & 8 & 8 & 9 & 9 & 8 & 9 \\ ine
+        \textbf{Scene Center Lat DMS} & "18°47'15.47""S" & "18°47'14.60""S" & "18°47'14.57""S" & "18°47'14.42""S" & "18°47'15.50""S" & "18°47'15""S" \\ ine
+        \textbf{Scene Center Long DMS} & "16°19'24.89""E" & "16°16'36.80""E" & "16°17'21.16""E" & "16°17'26.23""E" & "16°18'50.76""E" & "16°16'07.28""E" \\ ine
+        \textbf{Corner Upper Left Lat DMS} & "17°44'22.85""S" & "17°44'23.03""S" & "17°44'22.99""S" & "17°44'22.99""S" & "17°44'22.88""S" & "17°44'23.06""S" \\ ine
+        \textbf{Corner Upper Left Long DMS} & "15°13'38.35""E" & "15°10'55.38""E" & "15°11'36.13""E" & "15°11'36.13""E" & "15°13'07.79""E" & "15°10'24.82""E" \\ ine
+        \textbf{Corner Upper Right Lat DMS} & "17°43'30.40""S" & "17°43'32.48""S" & "17°43'31.87""S" & "17°43'31.87""S" & "17°43'30.76""S" & "17°43'32.74""S" \\ ine
+        \textbf{Corner Upper Right Long DMS} & "17°24'09.43""E" & "17°21'16.42""E" & "17°22'07.28""E" & "17°22'07.28""E" & "17°23'38.90""E" & "17°20'56.04""E" \\ ine
+        \textbf{Corner Lower Left Lat DMS} & "19°51'06.55""S" & "19°51'06.73""S" & "19°50'56.94""S" & "19°50'56.94""S" & "19°51'06.59""S" & "19°50'57.01""S" \\ ine
+        \textbf{Corner Lower Left Long DMS} & "15°13'48.61""E" & "15°11'03.59""E" & "15°11'44.84""E" & "15°11'44.84""E" & "15°13'17.69""E" & "15°10'32.63""E" \\ ine
+        \textbf{Corner Lower Right Lat DMS} & "19°50'07.33""S" & "19°50'09.71""S" & "19°49'59.27""S" & "19°49'59.27""S" & "19°50'07.76""S" & "19°50'00.24""S" \\ ine
+        \textbf{Corner Lower Right Long DMS} & "17°25'57.86""E" & "17°23'02.69""E" & "17°23'54.06""E" & "17°23'54.06""E" & "17°25'26.94""E" & "17°22'41.92""E" \\ ine
+        \textbf{Scene Center Latitude} & -18.78763 & -18.78739 & -18.78738 & -18.78734 & -18.78764 & -18.78750 \\ ine
+        \textbf{Scene Center Longitude} & 16.32358 & 16.27689 & 16.28921 & 16.29062 & 16.31410 & 16.26869 \\ ine
+        \textbf{Corner Upper Left Latitude} & -17.73968 & -17.73973 & -17.73972 & -17.73972 & -17.73969 & -17.73974 \\ ine
+        \textbf{Corner Upper Left Longitude} & 15.22732 & 15.18205 & 15.19337 & 15.19337 & 15.21883 & 15.17356 \\ ine
+        \textbf{Corner Upper Right Latitude} & -17.72511 & -17.72569 & -17.72552 & -17.72552 & -17.72521 & -17.72576 \\ ine
+        \textbf{Corner Upper Right Longitude} & 17.40262 & 17.35456 & 17.36869 & 17.36869 & 17.39414 & 17.34890 \\ ine
+        \textbf{Corner Lower Left Latitude} & -19.85182 & -19.85187 & -19.84915 & -19.84915 & -19.85183 & -19.84917 \\ ine
+        \textbf{Corner Lower Left Longitude} & 15.23017 & 15.18433 & 15.19579 & 15.19579 & 15.22158 & 15.17573 \\ ine
+        \textbf{Corner Lower Right Latitude} & -19.83537 & -19.83603 & -19.83313 & -19.83313 & -19.83549 & -19.83340 \\ ine
+        \textbf{Corner Lower Right Longitude} & 17.43274 & 17.38408 & 17.39835 & 17.39835 & 17.42415 & 17.37831 \\ ine
+    \end{tabular}% 
+    }
+  \end{sidewaystable}
+
+\setlength{\belowcaptionskip}{-30pt}
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03a_mar.jpg} \\
+    \small (a)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03b_apr.jpg} \\
+    \small (b)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03c_may.jpg} \\
+    \small (c)
+     \end{tabular}
+     \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03d_jun.jpg} \\
+    \small (d)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03e_jul.jpg} \\
+    \small (e)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_03f_aug.jpg} \\
+    \small (f)
+  \end{tabular}
+  \caption{Landsat 8-9 OLI/TIRS images used as dataset covering the Etosha Pan region, Namibia, 2022: \textbf{(a)}: 26 March;\textbf{(b)}: 11 April; \textbf{(c)}: 5 May; \textbf{(d)}: 6 June; \textbf{(e)}: 16 July; \textbf{(f)}: 9 August. The images are shown in RGB colours. Data source: USGS.}
+  \label{fig03}
+\end{figure}
+\vspace{2em}
+
+{The influence of seasonal climate effects on the water balance of Etosha lake was studied by estimating and comparing water interception, changes in shore line detectable on the satellite images and identified dynamics of land cover classes at different patterns of landscapes with an adjacent land cover types. To this end, }the colour composites {were created using the available dataset, which are} presented in Figure \ref{fig04} with different combinations used as the RGB triplets from the Landsat bands. The raw dataset illustrates the environmental changes in Etosha Pan that fluctuates from the wet period when the lake is filled with water to the dry period when the basin becomes covered with a salt crust. 
+
+{Salinisation of the Etosha Pan is generally caused by seasonal fluctuations from dry to wet periods. During hot summer time, rains gradually slow and cease leaving the basin of the lake covered by crust of salt and minerals}. Parched brownish landscapes in western and central parts of lake clearly contrast with the remaining segments of the lake still filled with water. Such changes are visible in the images in Figure \ref{fig03} where different colours of water varying from electric cyan to dark navy blue show the depths of the lake with darker shadows indicating deeper segments. In the set of false colour and natural colour composites of images shown in Figure \ref{fig04}, the bright colours of the remaining water and a thin channel connecting the deep part of the basin with drying segment filled with salt and minerals offers a clear contrast with the parched brownish landscapes of savannah of the surroundings. In the dry months (June to August) the bare soil areas contrast with the images on wet season (March to May) with areas covered by lush vegetation. 
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04a_754.jpg} \\
+    \small (a)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04b_234.jpg} \\
+    \small (b)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04c_345.jpg} \\
+    \small (c)
+     \end{tabular}
+    \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04d_753.jpg} \\
+    \small (d)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04e_345.jpg} \\
+    \small (e)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04f_234.jpg} \\
+    \small (f)
+     \end{tabular}
+     \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04g_357.jpg} \\
+    \small (g)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04h_156} \\
+    \small (h)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=4cm]{Fig_04i_741.jpg} \\
+    \small (i)
+     \end{tabular}
+  \caption{Examples of different combinations of the created colour composites highlighting the Etosha Pan, Namibia. The images are generated based on triplets of Landsat 8-9 OLI/TIRS bands on 2022, using 'r.composite' module of GRASS GIS: \textbf{(a)}: March: Bands 7-5-3;\textbf{(b)}: March: Bands 2-3-4; \textbf{(c)}: March: Bands 3-4-5; \textbf{(d)}: April: Bands 7-5-4;\textbf{(e)}: April: Bands 3-4-5; \textbf{(f)}: April: Bands 3-4-5; \textbf{(g)}: May: Bands 3-5-7; \textbf{(h)}: June: Bands 1-5-6; \textbf{(i)}: August: Bands 7-4-1.}
+  \label{fig04}
+\end{figure}
+
+The location of the more wet and deeper topographic ares in the eastern part of the basin well represents local climate setting of the Etosha where mean annual rainfall ranging from 250 mm/year in the west and up to 550 mm/year in the east \cite{Koeniger}. Green colours indicate mosaic vegetation in the surrounding landscapes, Figure \ref{fig03}. {The salinisation of the lake is relatively high in the periods of droughts that cause dissolution of salts through water evaporation which increases the pH. In contrast, during occasional rains, the convective clouds appearing over the lake with peaks in the winder period cause thermal inversions, which lead to higher occurrence of precipitation in the coastal areas, mostly in the winter and influenced by seasonal climate patterns} \cite{SHIKANGALAH2022151974}.
+
+\subsection{ML framework}
+
+The GRASS GIS ML framework of image processing described below was employed to map seasonal variations in the Etosha Pan using six satellite multispectral Landsat 8-9 OLI/TIRS images with one-month time span. Image analysis was performed on Landsat scenes taken on different time span from April to August where the texture of land cover types in highly diversified due to the natural processes of water evaporation from the basin and drying lake. The detected landscape dynamics enabled to demonstrate the robustness of the RF-based classification method to monitoring seasonal variations using Earth observation data. Moreover, several colours composites were generated using GRASS GIS module 'r.composite' since such band combinations of the multispectral images detail features on the land surface  and provide more information compared to the monochrome bands taken separately. The performance of the both RF and MaxLike methods of image classification was visualised, compared  and evaluated with six 30-m resolution multi-spectral Landsat OLI-TIRS multispectral satellite images with the results shown as colour classified images in Figure \ref{fig05} and Figure \ref{fig07}. 
+
+The class distribution of pixels in the original multispectral colour images were computed and summarised by module of GRASS GIS in the statistical report for each image. Colour composites were generated for classification approach based on information on pixel reflectance derived automatically using computer vision algorithms during the classification processes for maximum likelihood and random forest algorithms, respectively. We used the class separability matrix for extraction of pixels according to the computed feature classes using several iterations. The number of stable points were computed for each image, and the convergence represented more than 98\% for each scene. The signature file for each image was generated using data on spectral signatures which measures the similarity  of pixels Digital Numbers (DN) for assignment to classes. This approach was applied to the whole classification process during the MaxLike procedure. We computed the classes using the clustering methods followed by the MaxLike algorithms and got the seed for the next step of Random Forest (RF) algorithm which labelled these pixels assigned to different classed to obtain the classified map in GRASS raster format. 
+
+Random Forest (RF) function algorithm of ensemble learning was derived from the embedded Python's library of Scikit-Learn and used to test the simulation of the satellite image time series on Etosha Pan region, Namibia. 
+
+The trained pixels were obtained from the 'RandomForestClassifier' algorithms connected to the Scikit-Learn libraries of Python \cite{Pedregosa} embedded with GRASS GIS ML function of image analysis. The RF is a type of bagging algorithm of image classification that uses the Machine Learning (ML) methods of the classification and regression tree decision as learners. The randomness of data points in a raster image evaluated in this algorithm is assessed for reducing model variance. As a result, the advantages of the RF consists in excellent generalisation approach to data classification which combines the results of multiple decision trees to reach a single classification result through anti-overfitting. 
+
+In the process of RF refinement, the following procedures were completed using supervised learning model 'RandomForestClassifier'. First, training areas were created from the 'trainingmap' where the results of the clustering raster map with labelled pixels assigned to 10 classes were used as balanced training data using class weights. Such adjustment enabled to automatically refine weights inversely proportional to class frequencies of pixels in each raster of the classified Landsat image. Second, the standardised feature variables were converted into values of zero mean and unit variance to reduce the complexity of computations. Next, the classification results (see Figure \ref{fig07}) show that spectral distributions of the pixels discriminated some regions within the Etosha Pan more precisely compared to the MaxLike and clustering approaches. The class probabilities were predicted using 'r.learn.predict' module. Third, feature importances were computed using permutation of pixels which were placed in a discrete raster around the boundary study area  to increase the accuracy of computation. 
+
+\pagebreak
+%----------- section ----------->
+\section{Results}
+
+{The results demonstrated that climate fluctuations play an important role in the water balance of Etosha basin. This is especially notable for the periods based on the observation during numerous days with mixed precipitation (satellite images for spring), maintaining for several days a high relative humidity inside the lacustrine environment composing the landscape (during winter period). Moreover, lacustrine processes related to water collection is crucial for water supplies of Etosha, maintaining surface water in the conditions of climate warming and groundwater that are critical for Namibia.} 
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05a.jpg} \\
+    \small (a)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05b.jpg} \\
+    \small (b)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05c.jpg} \\
+    \small (c)
+     \end{tabular}
+     \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05d.jpg} \\
+    \small (d)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05e.jpg} \\
+    \small (e)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_05f.jpg} \\
+    \small (f)
+  \end{tabular}
+  \caption{Classification of the Landsat-8-9 OLI/TIRS images covering the Etosha Pan region, Namibia using 'MaxLike' method: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022.}
+  \label{fig05}
+\end{figure}
+\vspace{2em}
+
+{For arid climate of Namibian, scarce resources of groundwater that are maintained by the Etosha lake, help vegetation and savannah grasses to keep a certain amount of water in the leaf area, and to grow during periods of drought. These two features led to a large capacity of the vegetation canopy, particularly in the savannah fields and scarce forests, to intercept liquid precipitation, release only a small amount of precipitation to the soil and eventually to maintain runoff in groundwater. These processes contribute to the sustaining of local evapotranspiration with an associated reduction of the sensible heat flux during the periods of droughts. However, the accurate estimation of the amount of water which was intercepted by the salt lake and subsoil remains a direction for further research and requires direct hydrogeological observations with relevant equipment.}
+
+The results of the present study present a map that shows the series of satellite images Landsat 8-9 OLI/TIRS on Etosha saline pan in order to evaluate the effectiveness of the novel module of GRASS GIS which is based on ensemble learning approach by RF algorithms for RS data processing. Figure \ref{fig05} shows the classification results for different images taken from wet period (March to May) and dry period (June to August) using band combinations of Landsat 8-9 OLI/TIRS. {From a climate-hydrological perspective, this research complements recent evidence on aridization of the Etosha lake which indicates that natural reserves of water in the ephemeral lakes of southern Africa play a key role in dampening heat extremes above the scarce vegetated terrestrial ecosystems such as savannah. It also attributes to saline lake seasonality and cloudiness the role of linkage in the positive feedback between the presence of precipitation and water balance in regions prone to drought such as deserts of Namibia} \cite{MORETTI202235588,WENBORN2025105309}. {Finally, the balance of water cools meteorological conditions and maintains and humidization, thus playing the role of buffer for the ecosystem. Since there are few studies dealing with the contribution of saline ephemeral lakes on the ecosystems of southern Africa and the changes in land cover types to the water balance, this work has contributed to filling in this gap with a case of south-western region of Africa.}
+
+ {In larger spatio-temporal scale, additional effects of changes in water content over the Etosha lake and associated land cover changes are related to the time period influenced by the diurnal water vapour accumulation. For example, the high relative humidity period from afternoon to evening contribute to a larger level of water use efficiency in grass leaves in the shore line around the lake. This is mostly caused by to minimal gradients between the concentrations of intercellular and ambient water vapour levels. Besides, high variations of humidity over the lake in winter periods cause higher cloudiness at small scales. Since they affect the estimation of evaporation fluxes which include large uncertainties, diurnal changes of water around the lake are difficult to assess and interpret using RS data and require additional fieldwork.} The 10 generalised land cover classes include the following types detected and identified using the maximal likelihood approach as a seed for the next random forest approach: 1) Mosaic vegetation / cropland 2) Aquatic or regularly flooded vegetation; 3) Bare areas and artificial surfaces; 4) Mixed broadleaved deciduous forests; 5) Open grassland; 6) Rainfed cropland; 7) Salt hardpans; 8) Water bodies (Etosha basin and other lakes); 9) Herbaceous vegetation, shrubland and thickets; 10) Sparse savannah grasslands.
+
+ {In this study, we employed two different methods, the ML for measuring pixel-wise percentage of land cover changes, and total evapotranspiration available from the general climate databases on Namibia to examine the variability of the transpiration levels and their effects on land cover types during one calendar year. In future studies, additional measurements at the soil level can be performed in an the subsequental years to evaluate the dynamics, in which the soil moisture around the lake cane be measured for environmental prognosis. Moreover, water discharge can be measured at the catchment level subject to the availability of fieldwork.}
+
+The accuracy analysis is demonstrated in Figure \ref{fig06} which shows the rejection probability for classified pixels. The cluster parameters used for evaluating spectral similarity of the adjacent classes was computed by the statistical reports generated by GRASS GIS during classification. The number of initial classes was set to 10 according to the major land cover types in the Etosha Pan basin and used to calculate percent convergence for each image. 
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06a.jpg} \\
+    \small (a)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06b.jpg} \\
+    \small (b)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06c.jpg} \\
+    \small (c)
+     \end{tabular}
+     \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06d.jpg} \\
+    \small (d)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06e.jpg} \\
+    \small (e)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_06f.jpg} \\
+    \small (f)
+  \end{tabular}
+  \caption{Accuracy assessment using the rejection probability for pixels classified for Landsat-8-9 OLI/TIRS images on the Etosha Pan region, Namibia: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022.}
+  \label{fig06}
+\end{figure}
+\vspace{2em} 
+
+Other statistical values included estimated minimum class size and class separation for each image, sampling interval. The standard deviations and means for seven bands of image regions were employed to evaluate the weights of the spectral reflectance of pixels and texture features represented on the images. The initial means for each band of the textured mosaic images were computed for each image composed of the classified images of the texture composites. 
+
+The RF classification demonstrated in Figure \ref{fig07} was calculated based on the classification (MaxLike) as a seed data in previous step, and yielded more robust and better results compared to the MaxLike. 
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07a.jpg} \\
+    \small (a)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07b.jpg} \\
+    \small (b)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07c.jpg} \\
+    \small (c)
+     \end{tabular}
+     \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07d.jpg} \\
+    \small (d)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07e.jpg} \\
+    \small (e)
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=5.5cm]{Fig_07f.jpg} \\
+    \small (f)
+  \end{tabular}
+  \caption{Results of the Random Forest (RF) classification using ML approach of GRASS GIS for the Landsat-8-9 OLI/TIRS images on Etosha Pan, Namibia: \textbf{(a)}: 26 March 2022;\textbf{(b)}: 11 April 2022; \textbf{(c)}: 5 May 2022; \textbf{(d)}: 6 June 2022; \textbf{(e)}: 16 July 2022; \textbf{(f)}: 9 August 2022.}
+  \label{fig07}
+\end{figure}
+\vspace{2em}
+
+{The difference between water input in rainy periods (spring-winter) and dry periods of droughts (summer and early autumn) forms affects on water output as evapotranspiration and water discharge, plus the variation in the soil water content which reflects the aridisation during droughts. Though direct measurements have not been included in estimation of the past water balance, our study revealed the effectiveness of RS data and ML techniques for evaluation of water-salt variations in Etosha. Combined with data on rainfall periods in the same calendar years, such as seasonal periods of mixed precipitation, contributed to higher throughfall, which in turn contributes to higher net precipitation (soil water recharge, in absence of runoff) and evaporative conditions inside the ephemeral lake of Etosha.} 
+
+\section{Discussion}
+
+The landscape patches are more diversified and fragmented with more details detected for smaller polygons both within and beyond the lake area (compare Figure \ref{fig05} and \ref{fig07}). Compared to the performance of 'MaxLike' classification, Random Forest classified performed better in case of similar classes in terms of separability of adjacent landscape patches. For instance, the grasslands, salt hardpan area of Etosha and flooded areas clearly distinct from the mosaic trees and regions of broadleaved deciduous forests due to the different texture characteristics and spectral reflectance of pixels. 
+
+The comparative analysis of images presented by the time series of Landsat scenes taken in 2022 illustrated the process of water evaporation and its gradual replacement by salt and minerals during a calendar cycle from wet to dry periods in Namibia. In addition, we investigated the effects of several approaches to image classification using maximal likelihood (MaxLike) and random forest (RF) algorithms, i.e. the traditional pixel-based and object-based approaches, on classification results. The classes were more easily segmented compared to the areas with similar parameters such as class 'sparse savannah grasslands' compared to class 'herbaceous vegetation, shrubland and thickets'. Therefore, the distributions of pixels according to spectral reflectances alone could only discriminate those regions that have distinct characteristics of brightness and spectral reflectance. The comparison of the results enabled to optimise image processing workflow using a series of the GRASS GIS modules including the ML components integrated with Scikit-Learn package of Python.
+
+As shown in Figure \ref{fig07}, distribution of spectral characteristics of diverse land cover types is affected by seasonal changes which is integrated with the effects from salinisation of the basin in dry periods from May onwards. Comparison of Figure  \ref{fig07} with Figure \ref{fig07} shows that RF yielded better results compared to the traditional classification using maximal likelihood. Thus, the performance of RF was further evaluated with several processed images. Thus, the ML model was trained and its performance was investigated using a non-random data partition approach of image classification. Instead of doing random data partition which splits the image into segments, the RF algorithm of GRASS GIS organised the raster image into different groups of classes according to the land cover types around Etosha, and then divided each scene using previously done training dataset obtained from the unsupervised automatic classification by clustering.
+
+Major research results can be summarised in the following highlights: 
+\begin{enumerate}
+\item Ensemble learning approach by Random Forest algorithm is applied for automated classification of satellite images. 
+\item Scripting techniques of GRASS GIS for image processing is used to visualise spatial variability of landscapes in Namibia.
+\item Seasonal oscillations in water / salt level in saline Etosha Pan were identified using visualised and analysed Landsat 8-9 OLI/TIRS images.
+\end{enumerate}
+
+Overall, the results of RF classification using ensemble learning approach demonstrated in Figure \ref{fig07} are more satisfying compared to the unsupervised classification despite the occasional pixels misclassification in some regions of central basin where over-fragmented mosaic of patches are visible. In general, the RF approach outperforms unsupervised clustering which can be explained by technical improvements of the ML methods. Specifically, ensemble learning approach is based on the adaptive integrating of land cover features based on automated recognition of spectral properties of pixels constituting raster scenes. 
+
+\section{Conclusions}
+
+{In this study, we quantified the frequency of land cover changes over Etosha basin of the salt lake in Namibia in a drought-prone region in the northern part of the country, and assessed the hydrological balance at basin using satellite images in short-term perspective. Mapping was performed using cartographic and ML frameformes of GRASS GIS at different temporal scales for thematic maps by combining different mapping approaches. Specifically,} we applied data-driven ensemble learning methods of GRASS GIS using RF algorithm to image processing and elucidate seasonal variations in Etosha Pan basin from March to August utilizing a dataset of six Landsat 8-9 OLI/TIRS images for visualization of landscape dynamics, which included 10 different land cover type classes. Etosha Pan is a salt landscape in northern Namibia with seasonal cycles in water level. Remote sensing (RS) data  processing is a useful tool for monitoring hydrological dynamics with image classification as the most common approach to identify changes. 
+
+{The }ensemble learning approach with {RF} classifier presents the example of {ML} advanced methods of image classification. This paper evaluates image classification methods using training algorithm of RF by GRASS GIS including the embedded Scikit-Learn ML library of Python. Land cover types around Etosha Pan were identified using classification of six multi-spectral Landsat 8-9 OLI/TIRS images collected in different seasons using modules of GRASS GIS 'r.learn.predict', 'r.random', 'r.learn.train', 'r.category', 'i.group'. This enabled to monitor the process of water evaporation during the transitional period. Comparative analysis revealed variations in the surface of basin from March to August when the basin is covered by the crust of salt and minerals. The series of maps made using GRASS GIS scripts demonstrated the opportunities of the ensemble learning tools to image processing. RF approach enable accurate image classification for environmental analysis of landscape dynamics. The ML method of image classification proposes an accurate tool for monitoring changes in the landscapes of Namibia.
+
+We also proposed a hybrid ML workflow framework that combines traditional classification of the satellite images based on k-means clustering and maximal likelihood method and random forest (RF) ML method using Python's Scikit-Learn library embedded in GRASS GIS to assess the reliability of modelling and mapping. This approach was employed to classify a series of multispectral Landsat 8-9 OLI/TIRS images in order to indicate, detect and visualise the dynamics of water evaporation and the increase in salt pan in the Etosha basin, as well as to demonstrate changes in the lacustrine landscapes. 
+
+A novel hybrid ensemble learning ML method of GRASS GIS to image classification is presented and proposed for satellite image processing for analysis of changing environmental setting of the Etosha Pan located in northern Namibia. This includes three major approaches which were tested and evaluated in this study: clustering with generating training pixels, traditional classification using maximum likelihood approach and Random Forest (RF) classification of ML. Additionally, the colour composites were created using several bands composites of Landsat. The classification accuracy was assessed using the computed confidence level of pixels assigned into ten major land cover classes around Etosha Pan. The RF algorithm provides the output of multiple decision trees to reach a classification of the satellite image. Thus, the hybrid classifier of prediction pattern evaluates the assignment of pixels on a raster scene using multiple decision trees.
+
+The efficiency of environmental mapping that operate with the satellite images, especially for monitoring seasonal fluctuations in land cover types can now be improved by using the Machine Learning (ML) methods of Python integrated with cartographic tools. Thus, the analysis of scenes indicates that the evaporation of water during dry periods coincides with the cycle of flooding and evaporation in the north Namibia. During dry period, a mineral-encrusted salt pan covers the surface of basin which reaches its peak in August while the most water-filled period is in March. The comparison of these scenes as ML-classified satellite images show gradual development in salinization of the Etosha Pan basin during six consecutive months in 2022. The results of experiments demonstrate that RF has a high automation in image processing, accuracy in pixel assignments, increased details of classification with more fragmented identified patterns in the landscapes of norther Namibia. Compared to the clustering algorithm of unsupervised classification, random forest algorithm achieved the best performance in classification of the satellite images. The parameter values of the RF showed that most regions were identified correctly except for the occasional segments in the centre of the Etosha Pan basin.
+
+With the development of ensemble algorithms presented by Scikit-Learn library of Python, RF is one of such approaches of ML that emerged and applied rapidly due to its effectiveness and applicability. Specifically for RS data processing, RF has been successfully applied to existing problem of classification due to its effectiveness, high level of automation and robustness. Although traditional classification methods using in mapping and GIS can effectively perform for satellite image processing, it has higher time-consuming performance. Moreover, the state-of-the-art image classification approaches depend on the regional landscape characteristics and specific property of land cover types. For instance, landscape heterogeneity, surface ruggedness, slope curvature and regional spatial complexity of land surface may affect the degree of fragmentation. In contrast, the Machine Learning (ML) algorithms are more efficient and straightforward in cartographic implementation in comparison with traditional ways of image classification. 
+
+The experimental results on processing and classification of six satellite images covering Etosha Pan indicate that the proposed RF algorithms of the ensemble learning methods of GRASS GIS is dominant in comparison with other methods. Thus, RF demonstrates the fast processing speed when dealing with multi-spectral images using functions of RS modules, 'r.learn.predict' and 'r.category'. When solving complex hybrid functions of 'r.learn.train' module, the RF shows its excellent exploration of the previous training dataset used as seed for the following classification. The extensibility of RF is represented in optimising the training pixels derived from the generated dataset by 'r.random' module with different heterogeneity of the landscapes that is expressed in fragmentation of patches. Besides superior performance, the time complexity of RF when used in GRASS GIS is acceptable compared with 'MaxLike' approach using 'i.maxlik' module as a traditional variant of image classification.
+
+This paper demonstrated the effective use of the RF method of image processing which was pitted against the other traditional classification methods such as k-means Clustering and Maximum Likelihood (MaxLike) of GRASS GIS. The use of such advanced solution helps in providing automated tools of satellite image processing and classification. Moreover, the feasibility of the RF algorithms enables to use it as an innovative approach that may be used in practise for diverse types of satellite images, including Sentinel, SPOT and other imagery. The outcome of the framework in the GRASS GIS based image processing using ensemble learning is the output of the series of the classified satellite images processed using decision criteria analysis of ML algorithms. To enhance its application in similar future studies, the RF classifiers technique can be applies as effective ML tools of the GRASS GIS modules to processing Earth observation data for operative environmental monitoring.
+
+Apart from technical application of the ensemble learning methods in cartography and using RF algorithm of GRASS GIS for modelling RS data, this study demonstrated the usefulness of the satellite images as a data source for environmental monitoring. Specifically, time series analysis enable to monitoring and detect cycles of flooding and droughts in the ecosystems of Africa. The series of several Landsat-8 OLI/TIRS satellite images processed in this study by ensemble learning techniques illustrated the process of intense evaporation of water over Etosha Pan, northern Namibia. This study contributed to the environmental monitoring of Etosha Pan through the analysis of the satellite images taken on different time period. Time series analysis of the RS data supports visualising the dynamics of droughts in Africa. In turn, environmental monitoring is supportive for preserving the ecosystem of Etosha National Park in Namibia where rare species such as elephants, lions or rhinos, depend on the availability of water in Etosha and have to adapt to its seasonally changing environment. 
+
+%----------- section ----------->
+\authorcontributions{Supervision, conceptualization, methodology, software, resources, funding acquisition, and project administration, writing---original draft preparation, methodology, software, data curation, visualization, formal analysis, validation, writing---review and editing, and investigation, P.L.}
+
+\funding{The publication was funded by the Editorial Office of Climate, Multidisciplinary Digital Publishing Institute (MDPI), by providing 100\% discount for the APC of this manuscript.}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{The data supporting the conclusions can be obtained from the publicly available USGS databases service of the satellite image repository: https://earthexplorer.usgs.gov/ . Figure 1 was plotted using Generic Mapping Tools (GMT) scripts using GEBCO-2023 data. Figure 2 was created using QGIS using FAO data. Figures 3 to 7 were created using the GRASS GIS scripts using processed satellite images Landsat 8-9 OLI/TIRS, USGS. } 
+
+\acknowledgments{The authors thank the reviewers for reading and helpful review of this manuscript.}
+
+\conflictsofinterest{The author declares no conflicts of interest relevant to this study.} 
+
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+MDPI & Multidisciplinary Digital Publishing Institute \\
+GEBCO & General Bathymetric Chart of the Oceans \\
+CC & Cubic Convolution \\
+GIS & Geographic Information Systems \\
+GRASS & Geographic Resources Analysis Support System \\
+GCP & Ground Control Points \\
+GMT & Generic Mapping Tools \\
+Landsat OLI/TIRS & Landsat Operational Land Imager and Thermal Infrared Sensor \\
+LPGS & Landsat Product Generation System \\
+FAO & Food and Agriculture Organization \\
+OBIA & Object Based Image Analysis \\
+RF & Random Forest \\
+RS & Remote Sensing \\
+USGS & United States Geological Survey \\
+WGS84 & World Geodetic System 1984 \\
+WRS & Worldwide Reference System \\
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+
+\reftitle{References}
+%\nocite{*}
+
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+\bibliography{Namibia.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{adjustwidth}
+\end{document}
