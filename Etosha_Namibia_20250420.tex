@@ -52,6 +52,9 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{adjustbox}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{pdflscape}
 
 \definecolor{deepblue}{rgb}{0,0,0.5}
 \definecolor{deepred}{rgb}{0.6,0,0}
@@ -176,7 +179,7 @@ Specifically, presented maps of land cover types support better understanding of
 \section{Study Area}
 The study area is focused on the saline Etosha Pan, Figure \ref{fig01}. 
  
- \setlength{\belowcaptionskip}{-10pt}
+% \setlength{\belowcaptionskip}{-10pt}
  \begin{figure}[H]
 	\noindent\includegraphics[width=\textwidth]{Fig_01.jpg}
 \caption{Topographic map of Namibia with indicated study area: Etosha Pan. Mapping software: Generic Mapping Tools (GMT). Map source: author.}
@@ -185,18 +188,18 @@ The study area is focused on the saline Etosha Pan, Figure \ref{fig01}.
 
 Etosha Pan belongs to the Cuvelai-Etosha Basin, a transboundary wetland area within the topographic depression located between the southern Angola and northern Namibia. The basin developed from the Palaeolake Etosha since Tertiary and presents the depression that collects waters from three drainage systems off the Angolan highlands, the Cubango and the Cuvelai Drainage System \cite{MILLER}. The topography of the region is generally flat which causes the diurnal oscillation of wind and variations in thermo-topographical gradients \cite{Preston}. Highly changing hydro-geomorphological setting of the deltaic drainage system of Etosha Pan lead to the regular fluctuations of the water level where lake changes from a basing flooded by water to a completely dry pan covered by crust salt and minerals \cite{Hipondoka}. 
 
-{Etosha lasine lake can represent an additional source of water in northern Namibia, not quantified by the commonly used methods, to the overall water input. Saline lakes play a role of a water condensate which is formed in larger quantities at higher temperatures. For example, in arid ecosystems with high and constant frequency of droughts, the occurrence of higher temperatures and raindrops creates favourable conditions for such processes. This can be illustrated by the saline Cuvelai basin, where mixing of fresh and old saline groundwater contribute to the hydrogeochemical and multi-environmental water balance}
+{Etosha \hl{saline} lake can represent an additional source of water in northern Namibia, not quantified by the commonly used methods, to the overall water input. Saline lakes play a role of a water condensate which is formed in larger quantities at higher temperatures. For example, in arid ecosystems with high and constant frequency of droughts, the occurrence of higher temperatures and raindrops creates favourable conditions for such processes. This can be illustrated by the saline Cuvelai basin, where mixing of fresh and old saline groundwater contribute to the hydrogeochemical and multi-environmental water balance}
 \cite{BAUMLE2024101721}. {However, the relevance of saline aquifers for the water balance of arid landscapes of Namibia is still largely unknown.}
-
-{The amount of water intercepted by the saline lake of Namibia in diverse seasons varies with temperature, wind and duration of droughts. Depending on these characteristics, for instance, severe heat waves, changing weather patterns is a major predictor of water interception rates. Nevertheless, important features are the occurrence of droughts and duration of the period withour stable precipitation which may intercept high amounts of water going to groundwater. Thus, they store water inside the lake, sustain evapotranspiration in the surrounding vegetation, decrease the ratio of water, and increase the air humidity. }Climate-related hazards such as frequent and severe droughts, unstable water inflow and extreme temperatures typical for arid and semi-arid climate of Namibia affect rare species that use Etosha as shelter habitat \cite{cli5030051}. 
 
 To preserve the world-renowned resources of vulnerable and fragile ecosystem around Etosha Pan, nature conservation measures and policies in Namibia were undertaken. This lead to the creation of the natural reserve of the Etosha National Park aimed at regulating the negative effects from agriculture activities, livestock husbandry, overgrazing, and tourism \cite{Gargallo,Novelli}. Landscapes of the Etosha National Park are dominated by the distribution of dry savannah which is a typical environmental characteristics of Namibia. Nevertheless, the variations of vegetation classes is highly fragmented which depends on the inter‐seasonal variations, availability of moisture and correlate with the actual rainfall situation \cite{Wagenseil}. The detailed land cover types are visualised on the map in Figure \ref{fig02}.
 
  \begin{figure}[H]
 	\noindent\includegraphics[width=\textwidth]{Fig_02.jpg}
-\caption{Land cover types of Namibia according to  Food and Agriculture Organizatio (FAO). Mapping software: QGIS. Map source: author.}\setlength{\belowcaptionskip}{-30pt}
+\caption{Land cover types of Namibia according to  Food and Agriculture Organizatio (FAO). Mapping software: QGIS. Map source: author.}%\setlength{\belowcaptionskip}{-30pt}
 \label{fig02}
 \end{figure}
+
+{The amount of water intercepted by the saline lake of Namibia in diverse seasons varies with temperature, wind and duration of droughts. Depending on these characteristics, for instance, severe heat waves, changing weather patterns is a major predictor of water interception rates. Nevertheless, important features are the occurrence of droughts and duration of the period withour stable precipitation which may intercept high amounts of water going to groundwater. Thus, they store water inside the lake, sustain evapotranspiration in the surrounding vegetation, decrease the ratio of water, and increase the air humidity. }Climate-related hazards such as frequent and severe droughts, unstable water inflow and extreme temperatures typical for arid and semi-arid climate of Namibia affect rare species that use Etosha as shelter habitat \cite{cli5030051}. 
 
 Oscillations in hydrological patterns from flooding to complete desiccation indicate the progressively increasing aridity and desertification of the Etosha basin affected by regional droughts, impacts from the Kalahari Desert and climate change. Two distinct seasons - dry from April to September and wet from October to March - distinctly divide the climate and environmental patterns while the intra-seasonal water influx is unstable and depend on the ephemeral streams forming occasional pools \cite{Himmelsbach}. At the same time, unique landscapes of Etosha create a habitat for ecosystems used by migrating birds and rare species as habitats \cite{Fox,LeRoux,Berry}. The ability of wetland birds such as flamingos to predict rain fronts and showers using changes in pressure gradients enables them to rapidly find water available in ephemeral reservoirs and pools of Etosha. This results in the significant number of migrating rare birds that use the Etosha as a destination place during severe droughts in other regions \cite{Simmons}. 
 
@@ -208,61 +211,9 @@ In the workflow of image processing, the Landsat images are computed by a GRASS 
 \subsection{Data}
 {In this study, we seek to assess the feasibility of measuring  water level and associated land cover changes around the Etosha lake using Remote Sensing (RS) data. Besides, we evaluate the relative contribution of the water components through seasonal changes in the balance at the catchment level detectable on the RS data, to estimate the water balance in the Etosha basin during a short-term period of 2022. Practically, we use a series of satellite images to estimate, for the first time, the areas of changes in the lake basing according to the annual water balance and all of its components based on data measured in 2022 using RS data.} The original images are visualised in Figure \ref{fig03}. 
 
-{Specifically, we apply Landsat imagery to better understand the potential influence of clime effects on lake level during diverse seasons of 2022, and the associated fluctuations of the drying land areas in the shoreline of Etosha on the water balance. }Major technical characteristics that differ for each Landsat scene are provided in Table \ref{tab01}. The data were obtained from the EarthExplorer repository of the United States Geological Survey (USGS) and included six satellite images of the Landsat 8-9 Operational Land Imager and Thermal Infrared Sensor (Landsat 8-9 OLI/TIRS). 
+{Specifically, we apply Landsat imagery to better understand the potential influence of clime effects on lake level during diverse seasons of 2022, and the associated fluctuations of the drying land areas in the shoreline of Etosha on the water balance. }Major technical characteristics that differ for each Landsat scene are provided in \hl{Appendix, }Table \ref{tab01}. The data were obtained from the EarthExplorer repository of the United States Geological Survey (USGS) and included six satellite images of the Landsat 8-9 Operational Land Imager and Thermal Infrared Sensor (Landsat 8-9 OLI/TIRS). 
 
 Major technical characteristics of the satellite images common for all the scenes are as follows: Landsat Collection Category -- T1, Collection Number 2, Data Type L2 -- OLI\_TIRS\_L2SP; Sensor Identifier -- OLI/TIRS; Station Identifier -- LGN. The images were taken during day period with nadir on at Worldwide Reference System (WRS) Path 179, WRS Row -- 73 of the Landsat satellite. Product Map Projection L1 for all the scenes is Universal Transverse Mercator (UTM) Zone 33 for northern Namibia, with Datum and Ellipsoid - WGS84. The Ground Control Points (GCP) Version for all the images is 5. The images were preprocessed by the provider using Landsat Product Generation System (LPGS) Processing Software Version 15.6.0 for Landsat-8 scenes and 16.2.0 for Landsat-9 scenes, respectively. Technically, the LPGS generates the data products of Landsat in GeoTIFF output format using standard image parameters using Cubic Convolution (CC) resampling method and 30-m resolution in most of the spectral bands and a spatial coverage of 185 km swath for each scene. 
-
-\begin{sidewaystable}
-%\caption{Metadata for Landsat images}
- \label{tab01}
- \resizebox{0.9\textwidth}{!}{%
-%\tiny
-%\small
-%\scriptsize
-\footnotesize
-\setlength\tabcolsep{2pt}
-\begin{tabular}{|l|l|l|l|l|l|l|}    
-ine
-      	\textbf{Landsat Scene Identifier} & \textbf{LC81790732022085LGN00} & \textbf{LC81790732022101LGN00} & \textbf{LC91790732022125LGN01} & \textbf{LC91790732022157LGN01} & \textbf{LC81790732022197LGN00} & \textbf{LC91790732022221LGN01} \\ ine
-        \textbf{Date Acquired} & 2022/03/26 & 2022/04/11 & 2022/05/05 & 2022/06/06 & 2022/07/16 & 2022/08/09 \\ ine
-        \textbf{Roll Angle} & 0.000 & 0.000 & 0.001 & 0.000 & -0.001 & 0.000 \\ ine
-        \textbf{Date Product Generated L2} & 2022/03/30 & 2022/04/19 & 2023/04/17 & 2023/04/14 & 2022/07/26 & 2023/04/03 \\ ine
-        \textbf{Date Product Generated L1} & 2022/03/30 & 2022/04/19 & 2023/04/17 & 2023/04/14 & 2022/07/26 & 2023/04/03 \\ ine
-        \textbf{Start Time} & 2022-03-26 08:55:28.788292 & 2022-04-11 08:55:30.641875 & 2022-05-05 08:55:23 & 2022-06-06 08:55:13 & 2022-07-16 08:55:54 & 2022-08-09 08:55:50 \\ ine
-        \textbf{Stop Time} & 2022-03-26 08:56:00.558292 & 2022-04-11 08:56:02.411875 & 2022-05-05 08:55:55 & 2022-06-06 08:55:45 & 2022-07-16 08:56:26 & 2022-08-09 08:56:22 \\ ine
-        \textbf{Land Cloud Cover} & 1.32 & 2.17 & 4.72 & 7.61 & 7.33 & 2.09 \\ ine
-        \textbf{Scene Cloud Cover L1} & 1.32 & 2.17 & 4.72 & 7.61 & 7.33 & 2.09 \\ ine
-        \textbf{Ground Control Points Model} & 655 & 731 & 757 & 770 & 770 & 764 \\ ine
-        \textbf{Geometric RMSE Model} & 6.052 & 5.435 & 4.999 & 5.096 & 4.984 & 4.731 \\ ine
-        \textbf{Geometric RMSE Model X} & 4.294 & 3.929 & 3.628 & 3.534 & 3.632 & 3.393 \\ ine
-        \textbf{Geometric RMSE Model Y} & 4.265 & 3.755 & 3.440 & 3.671 & 3.413 & 3.297 \\ ine
-        \textbf{Sun Elevation L0RA} & 52.82328395 & 49.80572103 & 44.79448536 & 39.50399786 & 39.59460724 & 43.81050644 \\ ine
-        \textbf{Sun Azimuth L0RA} & 58.84443485 & 50.14840089 & 40.94078960 & 36.09442691 & 38.72515388 & 43.52123333 \\ ine
-        \textbf{TIRS SSM Model} & FINAL & FINAL & N/A & N/A & FINAL & N/A \\ ine
-        \textbf{Satellite} & 8 & 8 & 9 & 9 & 8 & 9 \\ ine
-        \textbf{Scene Center Lat DMS} & "18°47'15.47""S" & "18°47'14.60""S" & "18°47'14.57""S" & "18°47'14.42""S" & "18°47'15.50""S" & "18°47'15""S" \\ ine
-        \textbf{Scene Center Long DMS} & "16°19'24.89""E" & "16°16'36.80""E" & "16°17'21.16""E" & "16°17'26.23""E" & "16°18'50.76""E" & "16°16'07.28""E" \\ ine
-        \textbf{Corner Upper Left Lat DMS} & "17°44'22.85""S" & "17°44'23.03""S" & "17°44'22.99""S" & "17°44'22.99""S" & "17°44'22.88""S" & "17°44'23.06""S" \\ ine
-        \textbf{Corner Upper Left Long DMS} & "15°13'38.35""E" & "15°10'55.38""E" & "15°11'36.13""E" & "15°11'36.13""E" & "15°13'07.79""E" & "15°10'24.82""E" \\ ine
-        \textbf{Corner Upper Right Lat DMS} & "17°43'30.40""S" & "17°43'32.48""S" & "17°43'31.87""S" & "17°43'31.87""S" & "17°43'30.76""S" & "17°43'32.74""S" \\ ine
-        \textbf{Corner Upper Right Long DMS} & "17°24'09.43""E" & "17°21'16.42""E" & "17°22'07.28""E" & "17°22'07.28""E" & "17°23'38.90""E" & "17°20'56.04""E" \\ ine
-        \textbf{Corner Lower Left Lat DMS} & "19°51'06.55""S" & "19°51'06.73""S" & "19°50'56.94""S" & "19°50'56.94""S" & "19°51'06.59""S" & "19°50'57.01""S" \\ ine
-        \textbf{Corner Lower Left Long DMS} & "15°13'48.61""E" & "15°11'03.59""E" & "15°11'44.84""E" & "15°11'44.84""E" & "15°13'17.69""E" & "15°10'32.63""E" \\ ine
-        \textbf{Corner Lower Right Lat DMS} & "19°50'07.33""S" & "19°50'09.71""S" & "19°49'59.27""S" & "19°49'59.27""S" & "19°50'07.76""S" & "19°50'00.24""S" \\ ine
-        \textbf{Corner Lower Right Long DMS} & "17°25'57.86""E" & "17°23'02.69""E" & "17°23'54.06""E" & "17°23'54.06""E" & "17°25'26.94""E" & "17°22'41.92""E" \\ ine
-        \textbf{Scene Center Latitude} & -18.78763 & -18.78739 & -18.78738 & -18.78734 & -18.78764 & -18.78750 \\ ine
-        \textbf{Scene Center Longitude} & 16.32358 & 16.27689 & 16.28921 & 16.29062 & 16.31410 & 16.26869 \\ ine
-        \textbf{Corner Upper Left Latitude} & -17.73968 & -17.73973 & -17.73972 & -17.73972 & -17.73969 & -17.73974 \\ ine
-        \textbf{Corner Upper Left Longitude} & 15.22732 & 15.18205 & 15.19337 & 15.19337 & 15.21883 & 15.17356 \\ ine
-        \textbf{Corner Upper Right Latitude} & -17.72511 & -17.72569 & -17.72552 & -17.72552 & -17.72521 & -17.72576 \\ ine
-        \textbf{Corner Upper Right Longitude} & 17.40262 & 17.35456 & 17.36869 & 17.36869 & 17.39414 & 17.34890 \\ ine
-        \textbf{Corner Lower Left Latitude} & -19.85182 & -19.85187 & -19.84915 & -19.84915 & -19.85183 & -19.84917 \\ ine
-        \textbf{Corner Lower Left Longitude} & 15.23017 & 15.18433 & 15.19579 & 15.19579 & 15.22158 & 15.17573 \\ ine
-        \textbf{Corner Lower Right Latitude} & -19.83537 & -19.83603 & -19.83313 & -19.83313 & -19.83549 & -19.83340 \\ ine
-        \textbf{Corner Lower Right Longitude} & 17.43274 & 17.38408 & 17.39835 & 17.39835 & 17.42415 & 17.37831 \\ ine
-    \end{tabular}% 
-    }
-  \end{sidewaystable}
 
 \setlength{\belowcaptionskip}{-30pt}
 \begin{figure}[H]
@@ -350,13 +301,37 @@ The GRASS GIS ML framework of image processing described below was employed to m
 
 The class distribution of pixels in the original multispectral colour images were computed and summarised by module of GRASS GIS in the statistical report for each image. Colour composites were generated for classification approach based on information on pixel reflectance derived automatically using computer vision algorithms during the classification processes for maximum likelihood and random forest algorithms, respectively. We used the class separability matrix for extraction of pixels according to the computed feature classes using several iterations. The number of stable points were computed for each image, and the convergence represented more than 98\% for each scene. The signature file for each image was generated using data on spectral signatures which measures the similarity  of pixels Digital Numbers (DN) for assignment to classes. This approach was applied to the whole classification process during the MaxLike procedure. We computed the classes using the clustering methods followed by the MaxLike algorithms and got the seed for the next step of Random Forest (RF) algorithm which labelled these pixels assigned to different classed to obtain the classified map in GRASS raster format. 
 
-Random Forest (RF) function algorithm of ensemble learning was derived from the embedded Python's library of Scikit-Learn and used to test the simulation of the satellite image time series on Etosha Pan region, Namibia. 
-
-The trained pixels were obtained from the 'RandomForestClassifier' algorithms connected to the Scikit-Learn libraries of Python \cite{Pedregosa} embedded with GRASS GIS ML function of image analysis. The RF is a type of bagging algorithm of image classification that uses the Machine Learning (ML) methods of the classification and regression tree decision as learners. The randomness of data points in a raster image evaluated in this algorithm is assessed for reducing model variance. As a result, the advantages of the RF consists in excellent generalisation approach to data classification which combines the results of multiple decision trees to reach a single classification result through anti-overfitting. 
+Random Forest (RF) function algorithm of ensemble learning was derived from the embedded Python's library of Scikit-Learn and used to test the simulation of the satellite image time series on Etosha Pan region, Namibia. The trained pixels were obtained from the 'RandomForestClassifier' algorithms connected to the Scikit-Learn libraries of Python \cite{Pedregosa} embedded with GRASS GIS ML function of image analysis. The RF is a type of bagging algorithm of image classification that uses the Machine Learning (ML) methods of the classification and regression tree decision as learners. The randomness of data points in a raster image evaluated in this algorithm is assessed for reducing model variance. As a result, the advantages of the RF consists in excellent generalisation approach to data classification which combines the results of multiple decision trees to reach a single classification result through anti-overfitting. 
 
 In the process of RF refinement, the following procedures were completed using supervised learning model 'RandomForestClassifier'. First, training areas were created from the 'trainingmap' where the results of the clustering raster map with labelled pixels assigned to 10 classes were used as balanced training data using class weights. Such adjustment enabled to automatically refine weights inversely proportional to class frequencies of pixels in each raster of the classified Landsat image. Second, the standardised feature variables were converted into values of zero mean and unit variance to reduce the complexity of computations. Next, the classification results (see Figure \ref{fig07}) show that spectral distributions of the pixels discriminated some regions within the Etosha Pan more precisely compared to the MaxLike and clustering approaches. The class probabilities were predicted using 'r.learn.predict' module. Third, feature importances were computed using permutation of pixels which were placed in a discrete raster around the boundary study area  to increase the accuracy of computation. 
 
-\pagebreak
+%----------- section ----------->
+\subsection{\textcolor{blue}{Accuracy assessment}}
+
+\hl{For remote sensing approach, the estimation of correctness is computed using the approach of splitting the raster dataset into the group categories of pixels where each pixel is defined to be suitable to this specific cluster or not according to the spectral reflectance value. The accuracy assessment was performed using computed kappa statistical based on the evaluated DNs.
+The class means of Digital Numbers (DN) of pixels computed for pixels assigned to 10 land cover classes, presented in Appendix section, Tables} \ref{tabLong1} and \ref{tabLong2}. \hl{The algorithm of Random Forest computes the probability likelihood of the features representing the land cover types over Etosha Pan. This assumes the independence between every pair of pixels and considers the value of cells assigned to each class of the classified satellite image as variables. The implementation of this algorithm in GRASS GIS is performed using r.learn.train module. }
+
+\hl{Since classification maps invariably contain misclassified pixels and possible classification mistakes, accuracy assessment is an essential step in any RS-based classification. Besides, it enables to compare the variations of land cover classes. Numerous factors cause possible errors, including the type of input raw data such as Landsat OLI/TIRS; the quality and details of the spectral signatures, the performance of the ML algorithms in processing on pixels in multispectral data and the complexity of the land cover pattern in real landscape mosaic pattern which affect the distinguishability of classes. The goal of accuracy assessment is to quantitatively evaluate the proportion of pixels correctly assigned to a given land cover category. Therefore, we assessment the output maps made with the six satellite scenes and validated  the results using following approaches: 1) Overall accuracy of the maps generated using satellite images covering Etosha; 2) User's accuracy of each of the classes; 3) Kappa coefficient for identification of misclassified pixels, Table} \ref{tabAcc}.
+
+\vspace{2em}
+\begin{table}[H] 
+\caption{Estimation of accuracy using Cohen's Kappa quantification of agreement for six Landsat satellite images processed by Random Forest (RF) and MaxLike algorithms in GRASS GIS. Estimated classes of land cover types for different periods in 2022 over Etosha Pan.\label{tabAcc}}
+\begin{tabularx}{\textwidth}{p{3cm}CCCCCC}
+\toprule
+\textbf{Algorithm} & \textbf{March} & \textbf{April} & \textbf{May} & \textbf{June} & \textbf{July} & \textbf{August} \\
+\midrule
+ Random Forest & 0.82 & 0.85 & 0.87  & 0.81 & 0.83 & 0.91\\
+Max Like &  0.78 & 0.81 & 0.85  & 0.81 & 0.78 & 0.81 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\hl{The user's accuracy is computed as the number of correctly classified pixels in each land cover class related to total number of reference pixels in ground truth data in the same category. The overall accuracy indicates the total number of accurately classified pixels on the Landsat raster matrix related to the total number of reference pixel. Both overall and user's accuracy are indicated in percentage (\%) with the best values close to 100\%. In contrast, Kappa coefficient is based on the chance-adjusted index of agreement where pixels are randomly assigned to classes and evaluated against the ground truth. Hence, Kappa presents a discrete multivariate method of accuracy assessment.} 
+
+\hl{The evaluation of Kappa is acceptable for values above 0.81. Spatial uncertainty in image classification shows the distribution of pixels to target classes which influences the results of the mapping. It was estimated to avoid bias by the chi square test which plots the reject raster map. This map shows the level of threshold which determines the confidence level at which each cell is categorised correctly and accurately assigned to the correct class. In the region over Etosha, 10 distinct land cover types were identified along with their DN codes, number of cells (pixels) in Landsat scenes and their number of training samples for RF validation. The thematic aggregation of these 10 land cover classes cannot be directly linked to the parameters of vegetation and requires further studies. The overall classification accuracy was computed above 80\% for RF and above 70\% for MaxLike which is considered as acceptable in both cases with RF outperforming the classical method.}
+
+
+%\pagebreak
 %----------- section ----------->
 \section{Results}
 
@@ -471,9 +446,13 @@ Other statistical values included estimated minimum class size and class separat
 
 \section{Discussion}
 
-\hl{In this study, we quantified the capacity of the saline lake to reflect the scarcity of water and intercept water in vegetation plat using RS dataset. The analysed time series provided an estimate of the changes in land cover types in the saline lake and capacity in the two different seasons, a dry period with drought (supper months) and a wet period (autumn-winter). The higher water storage capacity of the autumn-winter period depended on the lower temperatures and increased precipitation level, which was comparable in the time series of the satellite images. Such climate fluctuations typically represented by response of vegetation were relevant for the water cycle in the Etosha lake and had a water-holding capacity higher in autum-winter periods, as assessed on the Landsat images for each scene. }The landscape patches are more diversified and fragmented with more details detected for smaller polygons both within and beyond the lake area (compare Figure \ref{fig05} and \ref{fig07}). Compared to the performance of 'MaxLike' classification, Random Forest classified performed better in case of similar classes in terms of separability of adjacent landscape patches. For instance, the grasslands, salt hardpan area of Etosha and flooded areas clearly distinct from the mosaic trees and regions of broadleaved deciduous forests due to the different texture characteristics and spectral reflectance of pixels. 
+\hl{In this study, we quantified the capacity of the saline lake to reflect the scarcity of water} and intercept water in vegetation plat using RS dataset. The analysed time series provided an estimate of the changes in land cover types in the saline lake and capacity in the two different seasons, a dry period with drought (supper months) and a wet period (autumn). The higher water storage capacity of the autumn-winter period depended on the lower temperatures and increased precipitation level, which was comparable in the time series of the satellite images. Such climate fluctuations typically represented by response of vegetation were relevant for the water cycle in the Etosha lake and had a water-holding capacity higher in \hl{autumn} periods, as assessed on the Landsat images for each scene. The landscape patches are more diversified and fragmented with more details detected for smaller polygons both within and beyond the lake area (compare Figure \ref{fig05} and \ref{fig07}). 
 
-The comparative analysis of images presented by the time series of Landsat scenes taken in 2022 illustrated the process of water evaporation and its gradual replacement by salt and minerals during a calendar cycle from wet to dry periods in Namibia. \hl{Apart from the physiological aspect of water use by the plant, the capacity of vegetation around saline lake to act as a climate regulator is climatologically relevant at a local scale for Namibia and the regional scale compared to other African countries prone to droughts. These include countries and Botswana, Lesotho, Malawi that have experienced severe droughts in recent years whcih lead to national disasters with consequances both for social well-being and and environmental sustainability. Moreover, the experience of Angola, Zambia, and Zimbabwe demonstrated  high susceptibility to drought, sensibility of extreme heat, increased the temperature and decreased the availability of water vapour in the air. Necessarily, such climate processes created feedback in the water cycle, affected the presence of dense vegetation and caused land degradation, and decreasing the availability of water vapour. }
+Compared to the performance of 'MaxLike' classification, Random Forest classified performed better in case of similar classes in terms of separability of adjacent landscape patches. For instance, the grasslands, salt hardpan area of Etosha and flooded areas clearly distinct from the mosaic trees and regions of broadleaved deciduous forests due to the different texture characteristics and spectral reflectance of pixels. \hl{The outperformance of the RF Classifier consists in its nature of supervised learning algorithm. It is considered among one of the most intuitive classifiers which implies the probabilistic approach and normal distribution of the data and straightforward implementation. The likelihood of the pixels assigned to each land cover class during image partition which partitions the pixels in the images according to the decision rule which evaluates the suitability of pixels into a target class of land cover types. The estimation of positive correctness is performed according to the module embedded in GRASS GIS. Specifically, the script used RF model using r.learn.train module for RF algorithm of image processing. The time series of the image classification performed using RF are based on the approach of the Scikit-Learn Library of Python embedded in GRASS GIS.}
+
+\hl{Compared to other advanced machine learning techniques such as Convolutional Neural Networks (CNN), RF demonstrates the  compatible advancements in methodological workflow. Thus, based on the benchmarking against the CNN state-of-the-art approaches that are also used in RS data processing} \cite{Wang17012022,Ma31122023,Zhaoetal2022}, \hl{Random Forest, presents the ensemble of decision trees. It is well-suited for tabular data and tasks that require interpretability and information retrieval. Contrary to RF, the CNNs is a type of neural network that are particularly effective for image and audio processing with hierarchical features identification.}
+
+The comparative analysis of images presented by the time series of Landsat scenes taken in 2022 illustrated the process of water evaporation and its gradual replacement by salt and minerals during a calendar cycle from wet to dry periods in Namibia. \hl{Apart from the physiological aspect of water use by the plant, the capacity of vegetation around saline lake to act as a climate regulator is climatologically relevant at a local scale for Namibia and the regional scale compared to other African countries prone to droughts. These include countries and Botswana, Lesotho, Malawi that have experienced severe droughts in recent years which lead to national disasters with consequences both for social well-being and and environmental sustainability. Moreover, the experience of Angola, Zambia, and Zimbabwe demonstrated  high susceptibility to drought, sensibility of extreme heat, increased the temperature and decreased the availability of water vapour in the air. Necessarily, such climate processes created feedback in the water cycle, affected the presence of dense vegetation and caused land degradation, and decreasing the availability of water vapour. }
 
 \hl{The} effects of several approaches \hl{were investigated }to image classification using maximal likelihood (MaxLike) and random forest (RF) algorithms, i.e. the traditional pixel-based and object-based approaches, on classification results. The classes were more easily segmented compared to the areas with similar parameters such as class 'sparse savannah grasslands' compared to class 'herbaceous vegetation, shrubland and thickets'. Therefore, the distributions of pixels according to spectral reflectances alone could only discriminate those regions that have distinct characteristics of brightness and spectral reflectance. The comparison of the results enabled to optimise image processing workflow using a series of the GRASS GIS modules including the ML components integrated with Scikit-Learn package of Python.
 
@@ -492,7 +471,7 @@ Overall, the results of RF classification using ensemble learning approach demon
 
 \hl{This research complements, in a climate-hydrological perspective, recent evidence that indicates that climate fluctuations play a key role in dampening heat extremes. With a case study of Namibia, we studied the selected region of vegetated terrestrial ecosystems above Etosha lake. It also attributes to seasonal variations in precipitation that contribute to saline concentrations in the lake and surrounding vegetation. Using satellite images as time series enabled to highlight the role of linkage in the positive feedback between the heat, dry, cool and humid meteorological conditions and their effects on natural vegetation and lacustrine environment. }
 
-{In this study, we quantified the frequency of land cover changes over Etosha basin of the salt lake in Namibia in a drought-prone region in the northern part of the country, and assessed the hydrological balance at basin using satellite images in short-term perspective. Mapping was performed using cartographic and ML frameforkes of GRASS GIS at different temporal scales for thematic maps by combining different mapping approaches. Specifically,} we applied data-driven ensemble learning methods of GRASS GIS using RF algorithm to image processing and elucidate seasonal variations in Etosha Pan basin from March to August utilizing a dataset of six Landsat 8-9 OLI/TIRS images for visualization of landscape dynamics, which included 10 different land cover type classes. Etosha Pan is a salt landscape in northern Namibia with seasonal cycles in water level. Remote sensing (RS) data  processing is a useful tool for monitoring hydrological dynamics with image classification as the most common approach to identify changes. 
+\hl{In this study, we quantified the frequency of land cover changes over Etosha basin of the salt lake in Namibia in a drought-prone region in the northern part of the country, and assessed the hydrological balance at basin using satellite images in short-term perspective. As we are now facing a reduction of water vapour in the air due to the global climate change, this possibly cause future disruption of the positive feedback in the water cycle in terrestrial ecosystems. Hence, the presence of the vegetation in savannah and grasslands of Namibia represents a critical element for climate regulation in the Etosha Pan region. This evidence is in line with recent studies indicating the capacity of vegetation, even scarce patches, regulate extreme heat conditions in arid and semi-arid environments of Africa.} 
 
 \hl{Using time series of satellite images, we quantified the frequency of drought events in a saline Etosha lake, northern Namibia, and assessed the land cover changes that indicate the effects from seasonal fluctuations in the hydrological balance. The spacial analysis was performed at basin and landscape scales by combining different GIS and ML measurement approaches.} Specifically, we\hl{ proposed a }ML workflow framework that combines traditional classification of the satellite images based on k-means clustering and maximal likelihood method and random forest (RF) ML method using Python's Scikit-Learn library embedded in GRASS GIS to assess the reliability of modelling and mapping. This approach was employed to classify a series of multispectral Landsat 8-9 OLI/TIRS images in order to indicate, detect and visualise the dynamics of water evaporation and the increase in salt pan in the Etosha basin, as well as to demonstrate changes in the lacustrine landscapes\hl{.} 
 
@@ -525,6 +504,7 @@ The following abbreviations are used in this manuscript:\\
 MDPI & Multidisciplinary Digital Publishing Institute \\
 GEBCO & General Bathymetric Chart of the Oceans \\
 CC & Cubic Convolution \\
+CNN & Convolutional Neural Network \\
 GIS & Geographic Information Systems \\
 GRASS & Geographic Resources Analysis Support System \\
 GCP & Ground Control Points \\
@@ -540,6 +520,188 @@ WGS84 & World Geodetic System 1984 \\
 WRS & Worldwide Reference System \\
 \end{tabular}
 }
+
+%----------------------------------->
+\appendixtitles{yes}
+\appendixstart
+\appendix
+
+\section[\appendixname~\thesection]{Technical parameters of Landsat 8-9 OLI/TIRS multispectral satellite images}
+
+%\begin{sidewaystable}
+\begin{landscape}
+\begin{table}
+\caption{Metadata: Technical parameters of Landsat 8-9 OLI/TIRS multispectral satellite images}
+ \label{tab01}
+% \resizebox{0.9\textwidth}{!}{%
+%\tiny
+%\small
+%\scriptsize
+\footnotesize
+\setlength\tabcolsep{2pt}
+\begin{tabular}{|l|l|l|l|l|l|l|}    
+      	\textbf{Landsat Scene Identifier} & \textbf{LC81790732022085LGN00} & \textbf{LC81790732022101LGN00} & \textbf{LC91790732022125LGN01} & \textbf{LC91790732022157LGN01} & \textbf{LC81790732022197LGN00} & \textbf{LC91790732022221LGN01} \\
+        \textbf{Date Acquired} & 2022/03/26 & 2022/04/11 & 2022/05/05 & 2022/06/06 & 2022/07/16 & 2022/08/09 \\
+        \textbf{Roll Angle} & 0.000 & 0.000 & 0.001 & 0.000 & -0.001 & 0.000 \\
+        \textbf{Date Product Generated L2} & 2022/03/30 & 2022/04/19 & 2023/04/17 & 2023/04/14 & 2022/07/26 & 2023/04/03 \\
+        \textbf{Date Product Generated L1} & 2022/03/30 & 2022/04/19 & 2023/04/17 & 2023/04/14 & 2022/07/26 & 2023/04/03 \\
+        \textbf{Start Time} & 2022-03-26 08:55:28.788292 & 2022-04-11 08:55:30.641875 & 2022-05-05 08:55:23 & 2022-06-06 08:55:13 & 2022-07-16 08:55:54 & 2022-08-09 08:55:50 \\
+        \textbf{Stop Time} & 2022-03-26 08:56:00.558292 & 2022-04-11 08:56:02.411875 & 2022-05-05 08:55:55 & 2022-06-06 08:55:45 & 2022-07-16 08:56:26 & 2022-08-09 08:56:22 \\
+        \textbf{Land Cloud Cover} & 1.32 & 2.17 & 4.72 & 7.61 & 7.33 & 2.09 \\
+        \textbf{Scene Cloud Cover L1} & 1.32 & 2.17 & 4.72 & 7.61 & 7.33 & 2.09 \\
+        \textbf{Ground Control Points Model} & 655 & 731 & 757 & 770 & 770 & 764 \\
+        \textbf{Geometric RMSE Model} & 6.052 & 5.435 & 4.999 & 5.096 & 4.984 & 4.731 \\
+        \textbf{Geometric RMSE Model X} & 4.294 & 3.929 & 3.628 & 3.534 & 3.632 & 3.393 \\
+        \textbf{Geometric RMSE Model Y} & 4.265 & 3.755 & 3.440 & 3.671 & 3.413 & 3.297 \\
+        \textbf{Sun Elevation L0RA} & 52.82328395 & 49.80572103 & 44.79448536 & 39.50399786 & 39.59460724 & 43.81050644 \\
+        \textbf{Sun Azimuth L0RA} & 58.84443485 & 50.14840089 & 40.94078960 & 36.09442691 & 38.72515388 & 43.52123333 \\
+        \textbf{TIRS SSM Model} & FINAL & FINAL & N/A & N/A & FINAL & N/A \\
+        \textbf{Satellite} & 8 & 8 & 9 & 9 & 8 & 9 \\
+        \textbf{Scene Center Lat DMS} & "18°47'15.47""S" & "18°47'14.60""S" & "18°47'14.57""S" & "18°47'14.42""S" & "18°47'15.50""S" & "18°47'15""S" \\
+        \textbf{Scene Center Long DMS} & "16°19'24.89""E" & "16°16'36.80""E" & "16°17'21.16""E" & "16°17'26.23""E" & "16°18'50.76""E" & "16°16'07.28""E" \\
+        \textbf{Corner Upper Left Lat DMS} & "17°44'22.85""S" & "17°44'23.03""S" & "17°44'22.99""S" & "17°44'22.99""S" & "17°44'22.88""S" & "17°44'23.06""S" \\
+        \textbf{Corner Upper Left Long DMS} & "15°13'38.35""E" & "15°10'55.38""E" & "15°11'36.13""E" & "15°11'36.13""E" & "15°13'07.79""E" & "15°10'24.82""E" \\
+        \textbf{Corner Upper Right Lat DMS} & "17°43'30.40""S" & "17°43'32.48""S" & "17°43'31.87""S" & "17°43'31.87""S" & "17°43'30.76""S" & "17°43'32.74""S" \\
+        \textbf{Corner Upper Right Long DMS} & "17°24'09.43""E" & "17°21'16.42""E" & "17°22'07.28""E" & "17°22'07.28""E" & "17°23'38.90""E" & "17°20'56.04""E" \\
+        \textbf{Corner Lower Left Lat DMS} & "19°51'06.55""S" & "19°51'06.73""S" & "19°50'56.94""S" & "19°50'56.94""S" & "19°51'06.59""S" & "19°50'57.01""S" \\
+        \textbf{Corner Lower Left Long DMS} & "15°13'48.61""E" & "15°11'03.59""E" & "15°11'44.84""E" & "15°11'44.84""E" & "15°13'17.69""E" & "15°10'32.63""E" \\
+        \textbf{Corner Lower Right Lat DMS} & "19°50'07.33""S" & "19°50'09.71""S" & "19°49'59.27""S" & "19°49'59.27""S" & "19°50'07.76""S" & "19°50'00.24""S" \\
+        \textbf{Corner Lower Right Long DMS} & "17°25'57.86""E" & "17°23'02.69""E" & "17°23'54.06""E" & "17°23'54.06""E" & "17°25'26.94""E" & "17°22'41.92""E" \\
+        \textbf{Scene Center Latitude} & -18.78763 & -18.78739 & -18.78738 & -18.78734 & -18.78764 & -18.78750 \\
+        \textbf{Scene Center Longitude} & 16.32358 & 16.27689 & 16.28921 & 16.29062 & 16.31410 & 16.26869 \\
+        \textbf{Corner Upper Left Latitude} & -17.73968 & -17.73973 & -17.73972 & -17.73972 & -17.73969 & -17.73974 \\
+        \textbf{Corner Upper Left Longitude} & 15.22732 & 15.18205 & 15.19337 & 15.19337 & 15.21883 & 15.17356 \\
+        \textbf{Corner Upper Right Latitude} & -17.72511 & -17.72569 & -17.72552 & -17.72552 & -17.72521 & -17.72576 \\
+        \textbf{Corner Upper Right Longitude} & 17.40262 & 17.35456 & 17.36869 & 17.36869 & 17.39414 & 17.34890 \\
+        \textbf{Corner Lower Left Latitude} & -19.85182 & -19.85187 & -19.84915 & -19.84915 & -19.85183 & -19.84917 \\
+        \textbf{Corner Lower Left Longitude} & 15.23017 & 15.18433 & 15.19579 & 15.19579 & 15.22158 & 15.17573 \\
+        \textbf{Corner Lower Right Latitude} & -19.83537 & -19.83603 & -19.83313 & -19.83313 & -19.83549 & -19.83340 \\
+        \textbf{Corner Lower Right Longitude} & 17.43274 & 17.38408 & 17.39835 & 17.39835 & 17.42415 & 17.37831 \\
+    \end{tabular}% 
+  %  }
+ % \end{sidewaystable}
+\end{table}
+ \end{landscape}
+
+\section[\appendixname~\thesection]{Computed class means of Digital Numbers (DN) of pixels}
+
+\vspace{2em}
+\begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
+\caption{Class means of Digital Numbers (DN) of pixels computed for pixels assigned to 10 land cover classes in landscapes of Etosha Pan within each multispectral band (1 to 7) of Landsat 8-9 OLI/TIRS for period March, April and May of 2022} \label{tabLong1}\\
+\hline \textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7} \\ \hline 
+\endfirsthead
+
+\multicolumn{5}{c}%
+{{\tablename\ \thetable{} -- continued from previous page}} \\
+\textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7}  \\ \hline 
+\endhead
+
+\hline \multicolumn{8}{r}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+\multicolumn{8}{| c |}{\textbf{2022: March}}\\
+\hline
+1 & 8098.62 &8512.65 & 8631.06 & 7546.23 & 7267.76 & 7546.9 & 7557.35 \\
+2 & 7553.06 & 7632.71 & 8068.18 & 7839.98 & 12844.7 & 10069.7 & 8585.51 \\
+3 & 7777.81 & 7884.66 & 8495.97 & 8214.02 & 15113.7 & 11568.1 & 9364.32 \\
+4 & 7877.98 & 7975.17 & 8689.92 & 8307.54 & 17252 & 12569.4 & 9727.25 \\
+5 & 7897.2 & 8012.3 & 8915.56 & 8403.3 & 19960.2 & 13680.2 & 10132.2 \\
+6 & 8411.29 & 8626.87 & 9550.21 & 9501.78 & 16952.6 & 14944.5 & 11811.4 \\
+7 & 8301.92 & 8521.3 & 9721.61 & 9335.65 & 20995.1 & 15866.2 & 11783.2 \\
+8 & 8916.74 & 9267.16 & 10375 & 10898.8 & 14101.7 & 15346.2 & 13192.6 \\
+9 & 9214.32 & 9617.25 & 10915.6 & 11471.1 & 16763.6 & 17559.3 & 14612.4 \\
+10 & 10372.2 & 11077.1 & 13007 & 14103.9 & 17708.2 & 20050.3 & 17456.2 \\
+\hline
+\multicolumn{8}{| c |}{\textbf{2022: April}}\\
+\hline
+1 & 9172.27 & 9666.92 & 11061.3 & 12392.3 & 14007.9 & 16706.8 & 15588.5 \\
+2 & 9727.84 & 10277.6 & 11940.7 & 13629.7 & 15604.9 & 19417.9 & 17995.7 \\
+3 & 10168.7 & 10794.8 & 12759.1 & 14845.5 & 17051.6 & 21189 & 19595 \\
+4 & 10779.8 & 11499.7 & 13878.3 & 16423.6 & 18753.7 & 22650.5 & 20923.9 \\
+5 & 11444.7 & 12242.6 & 15038.4 & 18017.7 & 20503.9 & 24315.4 & 22337.3 \\
+6 & 12047.4 & 12943.1 & 16145.8 & 19523 & 22077.2 & 25880.5 & 23886.3 \\
+7 & 12259.9 & 13241.8 & 16912 & 20767 & 23376.4 & 27664.4 & 25777 \\
+8 & 12268.5 & 13409.6 & 17712.3 & 22303.6 & 25270 & 29699 & 27773.2 \\
+9 & 12286.8 & 13596.3 & 18865.7 & 24514.6 & 28062.5 & 32565.3 & 30349.5 \\
+10 & 12888.2 & 14353.3 & 20060.4 & 26171.5 & 29941.7 & 34355.6 & 32069.7 \\
+\hline
+
+\multicolumn{8}{| c |}{\textbf{2022: May}}\\
+\hline
+1 & 8111.51 & 8199.08 & 8100.88 & 7465.42 & 7287.35 & 7335.55 & 7330.84 \\
+2 & 7565.9 & 7794.02 & 8480.23 & 8399.37 & 13105.3 & 11135.9 & 9540.2 \\
+3 & 7941.53 & 8209.27 & 9135.12 & 9131.33 & 14663.5 & 13138.1 & 10966.2 \\
+4 & 8278.6 & 8635.24 & 9757.47 & 10183.6 & 14710.6 & 15182 & 12997.8 \\
+5 & 8007.61 & 8238.4 & 9379.12 & 9007.12 & 18137.6 & 13349.7 & 10649.6 \\
+6 & 7959.3 & 8113.15 & 9263.84 & 8488.51 & 22413.9 & 12764.6 & 9831.97 \\
+7 & 8460.35 & 8799.31 & 10364.7 & 10092.9 & 20827.9 & 15638.7 & 12351.6 \\
+8 & 8552.87 & 8939.44 & 10306.6 & 10660.9 & 17349.2 & 16382.3 & 13624.4 \\
+9 & 8999.75 & 9517.87 & 11173.8 & 12159.9 & 17889.8 & 18838.8 & 16259.8 \\
+10 & 10309.3 & 11076.4 & 13413.5 & 15174.4 & 20565.5 & 22691.1 & 20127.9 \\
+\hline
+\end{longtable}
+
+\vspace{2em}
+\begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
+\caption{Class means of Digital Numbers (DN) of pixels computed for pixels assigned to 10 land cover classes in landscapes of Etosha Pan within each multispectral band (1 to 7) of Landsat 8-9 OLI/TIRS for period June, July and August of 2022} \label{tabLong2}\\
+\hline \textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7} \\ \hline 
+\endfirsthead
+
+\multicolumn{5}{c}%
+{{\tablename\ \thetable{} -- continued from previous page}} \\
+\textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7}  \\ \hline 
+\endhead
+
+\hline \multicolumn{8}{r}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+\multicolumn{8}{| c |}{\textbf{2022: June}}\\
+\hline
+1 & 7399.11 & 7700.46 & 8093.33 & 7507.22 & 7510.31 & 7816.17 & 7813.15 \\
+2 & 7959.95 & 8136.6 & 8833.45 & 8718.96 & 13723.5 & 11931.4 & 9971.79 \\
+3 & 8201.19 & 8373.2 & 9271.63 & 8957.59 & 15874.8 & 13059 & 10480 \\
+4 & 8508.25 & 8772.75 & 9770.7 & 9832.82 & 16037.3 & 15151 & 12167.9 \\
+5 & 9122.23 & 9558.15 & 10904.5 & 11408.6 & 16780.3 & 17255.5 & 14327.4 \\
+6 & 8273.09 & 8469.63 & 9647.99 & 9097.73 & 19055.1 & 13632 & 10670.7 \\
+7 & 8723.8 & 9047.95 & 10477.3 & 10227.1 & 19679.1 & 15727.3 & 12388 \\
+8 & 8183.4 & 8340.86 & 9546.97 & 8750.16 & 22739.3 & 13310.2 & 10176.4 \\
+9 & 10457.7 & 11207.5 & 13337.1 & 14292.3 & 18851.1 & 19633.9 & 17061.3 \\
+10 & 19323.2 & 20808 & 24156 & 26234.2 & 25164.8 & 10514.2 & 9812.97 \\
+\hline
+\multicolumn{8}{| c |}{\textbf{2022: July}}\\
+\hline
+1 & 7033.1 & 7688.66 & 8510.3 & 8449.8 & 7990.8 & 8203 & 7274 \\
+2 & 7560.4 & 8281.7 & 8560.3 & 8224.9 & 13040.9 & 11089.2 & 9779.6 \\
+3 & 8216.2 & 8939.2 & 9712.9 & 8334.1 & 15433.2 & 14969.2 & 10943.7 \\
+4 & 7644.4 & 7384.1 & 8481 & 8648.1 & 16999.2 & 16562.3 & 13553.5 \\
+5 & 10656 & 9420.3 & 10772.2 & 11487.4 & 16169.5 & 17778 & 14108.5 \\
+6 & 9307.7 & 9169.1 & 9759 & 9509.2 & 9315.2 & 18022.2 & 10479.6 \\
+7 & 9608.7 & 9393.8 & 10979.8 & 10170.6 & 20216.8 & 15145.9 & 10732.8 \\
+8 & 8261.8 & 8162.6 & 9058.5 & 8295.3 & 24431.1 & 13640.4 & 10337.6 \\
+9 & 11175.6 & 12129.1 & 16335.5 & 22089.8 & 25585 & 11287 & 19048.6 \\
+10 & 19820.4 & 20904.1 & 24044.4 & 26760.4 & 25635.7 & 10727.8 & 9325.1 \\
+\hline
+
+\multicolumn{8}{| c |}{\textbf{2022: August}}\\
+\hline
+1 & 7041.39 & 7881.47 & 8779.5 & 8671.9 & 8448.1 & 8012.5 & 7620.7 \\
+2 & 7509.45 & 8198 & 8426.4 & 8006.5 & 13539.5 & 11770.2 & 10881.2 \\
+3 & 10167 & 10929.8 & 13643.9 & 17182.6 & 19783.6 & 24339.5 & 20655.8 \\
+4 & 10120.6 & 10907.8 & 13742.9 & 17641.8 & 21205.1 & 26004.9 & 22347.9 \\
+5 & 10729.5 & 11682.5 & 14818.6 & 18738.2 & 22049 & 26015.7& 21883 \\
+6 & 10332.3 & 11175.8 & 14259.5 & 18477.3 & 22424 & 27292.5 & 23640.7 \\
+7 & 11140.5 & 12116.5 & 15589.2 & 19917.4 & 23254.2 & 27496.6 & 23605 \\
+8 & 10528.9 & 11417.4 & 14751.7 & 19200.1 & 23303.7 & 28395.3 & 24923.8 \\
+9 & 10891.9 & 11843.6 & 15584.2 & 10448.8 & 14362.9 & 19302.3 & 16023.8 \\
+10 & 12081.2 & 20117.6 & 24961.7 & 26527.8 & 24521.1 & 10527 & 9580.5 \\
+\hline
+\end{longtable}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{adjustwidth}{-\extralength}{0cm}
